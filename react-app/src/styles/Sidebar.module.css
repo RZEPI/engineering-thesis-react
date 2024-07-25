@@ -1,0 +1,46 @@
+.sidebar-navigation {
+  background-color: rgb(95, 218, 252);
+  height: 100vh;
+  width: 35%;
+  position: fixed;
+  z-index: 10;
+  float: left;
+  left: 0;
+}
+.button-header {
+  width: 35%;
+  position: fixed;
+  z-index: 10;
+  top: 0.3em;
+  height: 4.5vh;
+}
+.link-container {
+  list-style-type: none;
+  padding: 0;
+}
+
+.burger-button {
+  margin-left: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 4.5vw;
+  height: 80%;
+  cursor: pointer;
+}
+.burger-button span {
+  background-color: #34495e;
+  width: 2.5em;
+  height: 0.4em;
+}
+.burger-button.expanded {
+  margin-left: calc(100% - 4.5vw);
+}
+
+.backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}

@@ -1,0 +1,23 @@
+.link a {
+  text-decoration: none;
+  text-align: center;
+  color: #34495e;
+  font-weight: 600;
+  width: 100%;
+  padding: 0.3em 0;
+  font-size: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 4fr 2fr;
+}
+.link {
+  list-style-type: none;
+  width: 100%;
+}
+.link:hover {
+  background-color: #49adc9;
+}
+.link a:active,
+.link a.active {
+  color: #fff;
+  background-color: rgba(52, 73, 94, 0.5);
+}
