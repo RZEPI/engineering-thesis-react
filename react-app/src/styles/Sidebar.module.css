@@ -1,14 +1,14 @@
 .sidebar-navigation {
-  background-color: rgb(95, 218, 252);
+  background-color: var(--main-color);
   height: 100vh;
-  width: 35vw;
+  width: var(--sidebar-width);
   position: fixed;
   z-index: 10;
   float: left;
   left: 0;
 }
 .button-header {
-  width: 35vw;
+  width: var(--sidebar-width);
   position: fixed;
   z-index: 10;
   top: 0;
@@ -30,13 +30,13 @@
   cursor: pointer;
 }
 .burger-button span {
-  background-color: #34495e;
+  background-color: var(--main-background-color);
   width: 2.5em;
   height: 0.4em;
 }
 
 .expanded {
-  transform: translateX(calc(35vw - 6em));
+  transform: translateX(calc(var(--sidebar-width) - 6em));
   transition-delay: 0.04s;
 }
 

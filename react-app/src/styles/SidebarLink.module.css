@@ -1,7 +1,7 @@
 .link a {
   text-decoration: none;
   text-align: center;
-  color: #34495e;
+  color: var(--main-background-color);
   font-weight: 600;
   width: 100%;
   padding: 0.3em 0;
@@ -14,10 +14,10 @@
   width: 100%;
 }
 .link:hover {
-  background-color: #49adc9;
+  background-color: var(--hover-element-color);
 }
 .link a:active,
 .link a.active {
   color: #fff;
-  background-color: rgba(52, 73, 94, 0.5);
+  background-color: var(--active-element-color);
 }

@@ -14,5 +14,5 @@
 }
 .error-container a {
   text-decoration: none;
-  color: #5fdafc;
+  color: var(--main-color);
 }

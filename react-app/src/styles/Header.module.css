@@ -1,5 +1,5 @@
 .main-header {
-  background-color: rgb(95, 218, 252);
+  background-color: var(--main-color);
   height: 4.5vh;
   margin: 0;
 }
