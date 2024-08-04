@@ -1,16 +1,15 @@
-:root{
-  --main-color:  #5fdafc;
+:root {
+  --main-color: #5fdafc;
   --main-background-color: #34495e;
   --active-element-color: #34495e80;
-  --hover-element-color:#49adc9;
+  --hover-element-color: #49adc9;
   --main-text-color: #ffffff;
   --sidebar-width: 35vw;
 }
 
-
 body {
   margin: 0;
-  background-color:var(--main-background-color);
+  background-color: var(--main-background-color);
   font-family: "Quicksand", "Sans Sheriff", "Arial";
   color: var(--main-text-color);
 }
