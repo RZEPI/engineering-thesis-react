@@ -1,0 +1,58 @@
+.sidebar-navigation {
+  background-color: var(--main-color);
+  height: 100vh;
+  width: var(--sidebar-width);
+  position: fixed;
+  z-index: 10;
+  float: left;
+  left: 0;
+}
+.button-header {
+  width: var(--sidebar-width);
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  height: 4.5vh;
+}
+.link-container {
+  list-style-type: none;
+  padding: 0;
+}
+
+.burger-button {
+  transition: transform 0.3s ease-out;
+  margin: 0.3em 0 0 2.7em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 2.5vw;
+  height: 80%;
+  cursor: pointer;
+}
+.burger-button span {
+  background-color: var(--main-background-color);
+  width: 2.5em;
+  height: 0.4em;
+}
+
+.expanded {
+  transform: translateX(calc(var(--sidebar-width) - 6em));
+  transition-delay: 0.04s;
+}
+
+.collapsed {
+  transform: translateX(0);
+}
+
+.backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+.border-shadow {
+  transition: box-shadow 0.4s;
+  box-shadow: 4px 0 4px 3px rgba(0, 0, 0, 0.5);
+}
