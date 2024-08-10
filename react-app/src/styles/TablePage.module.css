@@ -1,0 +1,41 @@
+:root {
+    --table-bg: rgb(100, 136, 255);
+    --main-text-color: black;
+    --cell-border-color: rgb(80, 80, 250);
+}
+
+.table {
+    width: 60%;
+    background-color: var(--table-bg);
+    border-radius: 2em;
+    color: var(--main-text-color);
+    font-weight: bold;
+    border-collapse: separate;
+    border: 10px solid #ffdd7e;
+    border-spacing: 0;
+    overflow: hidden;
+
+}
+
+.table td, .table th {
+    border: 2px solid var(--cell-border-color);
+    padding: 1em;
+    margin: 1em;
+}
+
+.table-page {
+    padding-top: 5em;
+    padding-bottom: 5em;
+    justify-content: center ;
+    display: flex;
+    width: 100%;
+    background-color: rgba(0, 132, 255, 0.37);
+}
+
+.table-page button {
+    width: auto;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin: 1em 2em 1em 2em;
+    height: 2em;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { NumberTable } from "../static/RandomDataTables";
 import { NamesTable } from "../static/RandomDataTables";
+import styles from "../styles/TablePage.module.css"
 
 let key: number = 0;
 
@@ -27,7 +28,7 @@ export default function TablePage() {
     {
         const generatedArray: [number, string, number][] = [];
 
-        for(let i = 0; i<500; i++)
+        for(let i = 0; i<5; i++)
         {
             const NameIndex: number =  Math.floor(Math.random() * NamesTable.length);
             const LevelIndex: number = Math.floor(Math.random() * NumberTable.length);
@@ -44,9 +45,14 @@ export default function TablePage() {
     }, []);
 
     return (
-        <div>
+        <div className={styles["table-page"]}>
             <button onClick={addRecord}>Add</button>
-            <table>
+            <table className={styles["table"]}>
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Level</th>
+                </thead>
                 <tbody>
                     {TableList}
                 </tbody>
