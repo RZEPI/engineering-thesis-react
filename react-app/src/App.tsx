@@ -4,6 +4,8 @@ import RootLayout from "./pages/RootLayout";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import TablePage from "./pages/TablePage";
+import { useEffect } from "react";
+import { ResultTable } from "./static/RandomDataTables";
 
 const router = createBrowserRouter([
   {
