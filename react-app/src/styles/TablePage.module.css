@@ -1,55 +1,72 @@
-:root {
-  --table-bg: rgb(100, 136, 255);
-  --main-text-color: black;
-  --cell-border-color: rgb(80, 80, 250);
+.page-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.page-content {
+  width: 80%;
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+.v-btn-cont {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+.v-btn-cont button {
+  font-size: 1.2em;
+  margin-top: 1em;
+  padding: 0.25em;
+  border: 2px solid grey;
+  background-color: white;
+  border-radius: 10px;
+}
+
+button:hover {
+  transition: all 0.3s;
+  background-color:var(--hover-element-color);
+}
+button:active {
+  background-color: var(--active-element-color);
+}
+
+.table-container {
+  padding: 2em 1em 2em 1em;
 }
 
 .table {
-  height: auto;
-  width: 60%;
-  background-color: var(--table-bg);
-  border-radius: 2em;
-  color: var(--main-text-color);
-  font-weight: bold;
-  border-collapse: separate;
-  border: 10px solid #ffdd7e;
-  border-spacing: 0;
+  box-sizing: content-box;
+  border: 10px solid var(--hover-element-color);
+  border-radius: 20px;
   overflow: hidden;
+  background-color: pink;
 }
 
-.table tr {
-  height: 2em;
-}
-
-.table td,
-.table th {
-  border: 2px solid var(--cell-border-color);
-  padding: 1em;
-  margin: 1em;
-}
-
-.table-page {
-  padding-top: 5em;
-  padding-bottom: 5em;
-  justify-content: center;
-  display: flex;
+.table-header {
+  display: grid;
+  grid-template-columns: [id] 20% [name] 40% [level] 40%;
+  background-color: var(--hover-element-color);
   width: 100%;
-  background-color: rgba(0, 132, 255, 0.37);
+  padding: 0.25em 0em 0.25em 0em;
 }
 
-.table-page button {
-  width: auto;
-  padding-left: 2em;
-  padding-right: 2em;
-  margin: 1em 2em 1em 2em;
-  min-height: 2em;
-  height: auto;
+.table-header div {
+  padding-left: 0.75em;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
-.vertical-buttons {
-  display: flex;
-  background-color: red;
-  width: 200px;
-  height: 600px;
-  flex-direction: column;
+.table-row {
+  background-color: var(--main-color);
+  width: 100%;
+  display: grid;
+  grid-template-columns: [id] 20% [name] 40% [level] 40%;
+}
+.table-cell {
+  height: 1em;
+  padding: 0.3em 0.3em 0.3em 0.75em;
+  border: 1px solid var(--hover-element-color);
+  font-weight: bold;
+  font-size: 1rem;
 }
