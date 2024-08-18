@@ -15,19 +15,22 @@ export default function TablePage() {
       className={styles["table-row"]}
       t={tuple}
       key={tuple[0]}
-      >
-    </TableRow>
+    ></TableRow>
   ));
 
-  function addRecord() {
-    const NameIndex: number = Math.floor(Math.random() * NamesTable.length);
-    const LevelIndex: number = Math.floor(Math.random() * NumberTable.length);
-    const newTuple: ArrayRow = [
-      key++,
-      NamesTable[NameIndex],
-      NumberTable[LevelIndex],
-    ];
-    setContent([newTuple, ...TableContent]);
+  function addNRecords(n: number) {
+    let NameIndex: number;
+    let LevelIndex: number;
+
+    const TmpArray: ArrayRow[] = [];
+
+    for (let i = 0; i < n; i++) {
+      NameIndex = Math.floor(Math.random() * NamesTable.length);
+      LevelIndex = Math.floor(Math.random() * NumberTable.length);
+      TmpArray.unshift([key++, NamesTable[NameIndex], NumberTable[LevelIndex]]);
+    }
+
+    setContent([...TmpArray, ...TableContent]);
   }
 
   function deleteRecord() {
@@ -39,6 +42,41 @@ export default function TablePage() {
     for (let i = 0; i < TableContent.length; i += n) {
       TableContent.splice(i--, 1);
     }
+    setContent([...TableContent]);
+  }
+
+  function updateNthRow(n: number) {
+    for (let i = 0; i < TableContent.length; i += n) {
+      TableContent[i][1] = "Changed Name " + i;
+    }
+    setContent([...TableContent]);
+  }
+
+  function replaceAllRows() {
+    for (let i = 0; i < TableContent.length; i++) {
+      TableContent[i] = [i, "Replaced " + i, 1];
+    }
+    setContent([...TableContent]);
+  }
+
+  function swapRows() {
+    const Index1 = Math.floor(Math.random() * TableContent.length);
+    const Index2 = Math.floor(Math.random() * TableContent.length);
+
+    const tmpRow: ArrayRow = TableContent[Index1];
+    TableContent[Index1] = TableContent[Index2];
+    TableContent[Index2] = tmpRow;
+
+    setContent([...TableContent]);
+  }
+
+  function clearRows() {
+    TableContent.forEach((element) => {
+      element[0] = 0;
+      element[1] = "";
+      element[2] = 0;
+    });
+
     setContent([...TableContent]);
   }
 
@@ -66,15 +104,19 @@ export default function TablePage() {
     <div className={styles["page-wrapper"]}>
       <div className={styles["page-content"]}>
         <div className={styles["v-btn-cont"]}>
-          <button onClick={addRecord}>Add</button>
+          <button onClick={() => addNRecords(5)}>Add</button>
           <button onClick={deleteRecord}>Delete</button>
           <button
             onClick={() => {
               deleteEveryNthRecord(2);
             }}
           >
-            Delete every nth
+            Delete Nth{" "}
           </button>
+          <button onClick={() => updateNthRow(2)}>Update Nth</button>
+          <button onClick={replaceAllRows}>Replace all</button>
+          <button onClick={swapRows}>Swap rows</button>
+          <button onClick={clearRows}>Clear rows</button>
         </div>
 
         <div className={styles["table-container"]}>
