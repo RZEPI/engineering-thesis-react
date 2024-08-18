@@ -1,18 +1,28 @@
 import styles from "../../styles/TablePage.module.css";
-import { ArrayRow } from "../../models/PerfTestArrayRow.ts";
+import { TableRowData } from "../../models/PerfTestArrayRow.ts";
+import { useState } from "react";
 
 export default function TableRow({
   t,
   className,
 }: {
-  t: ArrayRow;
+  t: TableRowData;
   className: string;
 }) {
+  const [focus, setFocus] = useState<boolean>(false);
+
+  function onClick() {
+    setFocus(!focus);
+  }
+
+  const classNames =
+    styles["table-row"] + (focus ? " " + styles["active"] : "");
+
   return (
-    <div className={styles["table-row"]}>
-      <div className={styles["table-cell"]}>{t[0]}</div>
-      <div className={styles["table-cell"]}>{t[1]}</div>
-      <div className={styles["table-cell"]}>{t[2]}</div>
+    <div className={classNames} onClick={onClick}>
+      <div className={styles["table-cell"]}>{t.id}</div>
+      <div className={styles["table-cell"]}>{t.name}</div>
+      <div className={styles["table-cell"]}>{t.level}</div>
     </div>
   );
 }

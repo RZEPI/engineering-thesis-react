@@ -1,1 +1,5 @@
-export type ArrayRow = [number, string, number];
+export type TableRowData = {
+  id: number;
+  name: string;
+  level: number;
+};

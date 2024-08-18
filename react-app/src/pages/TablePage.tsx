@@ -3,18 +3,18 @@ import { NumberTable } from "../static/RandomDataTables";
 import { NamesTable } from "../static/RandomDataTables";
 import TableRow from "../components/UI/TableRow";
 import styles from "../styles/TablePage.module.css";
-import { ArrayRow } from "../models/PerfTestArrayRow";
+import { TableRowData } from "../models/PerfTestArrayRow";
 
 let key: number = 0;
 
 export default function TablePage() {
-  const [TableContent, setContent] = useState<ArrayRow[]>([]);
+  const [TableContent, setContent] = useState<TableRowData[]>([]);
 
   const TableList = TableContent.map((tuple) => (
     <TableRow
       className={styles["table-row"]}
       t={tuple}
-      key={tuple[0]}
+      key={tuple.id}
     ></TableRow>
   ));
 
@@ -22,12 +22,16 @@ export default function TablePage() {
     let NameIndex: number;
     let LevelIndex: number;
 
-    const TmpArray: ArrayRow[] = [];
+    const TmpArray: TableRowData[] = [];
 
     for (let i = 0; i < n; i++) {
       NameIndex = Math.floor(Math.random() * NamesTable.length);
       LevelIndex = Math.floor(Math.random() * NumberTable.length);
-      TmpArray.unshift([key++, NamesTable[NameIndex], NumberTable[LevelIndex]]);
+      TmpArray.unshift({
+        id: key++,
+        name: NamesTable[NameIndex],
+        level: NumberTable[LevelIndex],
+      });
     }
 
     setContent([...TmpArray, ...TableContent]);
@@ -47,14 +51,18 @@ export default function TablePage() {
 
   function updateNthRow(n: number) {
     for (let i = 0; i < TableContent.length; i += n) {
-      TableContent[i][1] = "Changed Name " + i;
+      TableContent[i].name = "Changed Name " + i;
     }
     setContent([...TableContent]);
   }
 
   function replaceAllRows() {
     for (let i = 0; i < TableContent.length; i++) {
-      TableContent[i] = [i, "Replaced " + i, 1];
+      TableContent[i] = {
+        id: i,
+        name: "Replaced " + i,
+        level: 1,
+      };
     }
     setContent([...TableContent]);
   }
@@ -63,7 +71,7 @@ export default function TablePage() {
     const Index1 = Math.floor(Math.random() * TableContent.length);
     const Index2 = Math.floor(Math.random() * TableContent.length);
 
-    const tmpRow: ArrayRow = TableContent[Index1];
+    const tmpRow: TableRowData = TableContent[Index1];
     TableContent[Index1] = TableContent[Index2];
     TableContent[Index2] = tmpRow;
 
@@ -72,25 +80,25 @@ export default function TablePage() {
 
   function clearRows() {
     TableContent.forEach((element) => {
-      element[0] = 0;
-      element[1] = "";
-      element[2] = 0;
+      element.id = 0;
+      element.name = "";
+      element.level = 0;
     });
 
     setContent([...TableContent]);
   }
 
   function generateArray() {
-    const generatedArray: ArrayRow[] = [];
+    const generatedArray: TableRowData[] = [];
 
     for (let i = 0; i < 5; i++) {
       const NameIndex: number = Math.floor(Math.random() * NamesTable.length);
       const LevelIndex: number = Math.floor(Math.random() * NumberTable.length);
-      generatedArray.unshift([
-        key++,
-        NamesTable[NameIndex],
-        NumberTable[LevelIndex],
-      ]);
+      generatedArray.unshift({
+        id: key++,
+        name: NamesTable[NameIndex],
+        level: NumberTable[LevelIndex],
+      });
     }
 
     setContent([...generatedArray, ...TableContent]);
