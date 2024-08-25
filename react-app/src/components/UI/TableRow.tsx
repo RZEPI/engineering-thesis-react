@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export default function TableRow({
   t,
-  className,
 }: {
   t: TableRowData;
   className: string;
@@ -12,7 +11,7 @@ export default function TableRow({
   const [focus, setFocus] = useState<boolean>(false);
 
   function onClick() {
-    setFocus(!focus);
+    setFocus((focus) => !focus);
   }
 
   const classNames =

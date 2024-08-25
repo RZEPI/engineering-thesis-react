@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
-import { NumberTable } from "../static/RandomDataTables";
-import { NamesTable } from "../static/RandomDataTables";
+import { numberTable } from "../static/RandomDataTables";
+import { namesTable } from "../static/RandomDataTables";
 import TableRow from "../components/UI/TableRow";
 import styles from "../styles/TablePage.module.css";
 import { TableRowData } from "../models/PerfTestArrayRow";
 
+const RECORDS_TO_CREATE: number = 3000;
+const RECORDS_TO_DELETE: number = 1000;
+const NTH_TO_DELETE: number = 2;
+const NTH_TO_UPDATE: number = 2;
+
 let key: number = 0;
 
 export default function TablePage() {
-  const [TableContent, setContent] = useState<TableRowData[]>([]);
+  const [tableContent, setContent] = useState<TableRowData[]>([]);
 
-  const TableList = TableContent.map((tuple) => (
+  const tableList = tableContent.map((tuple) => (
     <TableRow
       className={styles["table-row"]}
       t={tuple}
@@ -19,89 +24,104 @@ export default function TablePage() {
   ));
 
   function addNRecords(n: number) {
-    let NameIndex: number;
-    let LevelIndex: number;
+    let nameIndex: number;
+    let levelIndex: number;
 
-    const TmpArray: TableRowData[] = [];
+    const tmpArray: TableRowData[] = [];
 
     for (let i = 0; i < n; i++) {
-      NameIndex = Math.floor(Math.random() * NamesTable.length);
-      LevelIndex = Math.floor(Math.random() * NumberTable.length);
-      TmpArray.unshift({
+      nameIndex = Math.floor(Math.random() * namesTable.length);
+      levelIndex = Math.floor(Math.random() * numberTable.length);
+      tmpArray.unshift({
         id: key++,
-        name: NamesTable[NameIndex],
-        level: NumberTable[LevelIndex],
+        name: namesTable[nameIndex],
+        level: numberTable[levelIndex],
       });
     }
 
-    setContent([...TmpArray, ...TableContent]);
+    setContent([...tmpArray, ...tableContent]);
   }
 
-  function deleteRecord() {
-    TableContent.splice(0, 1);
-    setContent([...TableContent]);
+  function deleteNRecords(n: number) {
+    setContent(tableContent.slice(n));
   }
 
   function deleteEveryNthRecord(n: number) {
-    for (let i = 0; i < TableContent.length; i += n) {
-      TableContent.splice(i--, 1);
+    const tmpArray: TableRowData[] = [...tableContent];
+
+    for (let i = 0; i < tmpArray.length; i += n) {
+      tmpArray.splice(i--, 1);
     }
-    setContent([...TableContent]);
+    setContent([...tmpArray]);
   }
 
   function updateNthRow(n: number) {
-    for (let i = 0; i < TableContent.length; i += n) {
-      TableContent[i].name = "Changed Name " + i;
+    const tmpArray: TableRowData[] = [...tableContent];
+
+    for (let i = 0; i < tmpArray.length; i += n) {
+      tmpArray[i] = {
+        ...tableContent[i],
+        name: "Changed Name " + i,
+      };
     }
-    setContent([...TableContent]);
+
+    setContent([...tmpArray]);
   }
 
   function replaceAllRows() {
-    for (let i = 0; i < TableContent.length; i++) {
-      TableContent[i] = {
-        id: i,
+    const tmpArray: TableRowData[] = [];
+
+    for (let i = 0; i < tableContent.length; i++) {
+      tmpArray.push({
+        id: key++,
         name: "Replaced " + i,
         level: 1,
-      };
+      });
     }
-    setContent([...TableContent]);
+
+    setContent([...tmpArray]);
   }
 
   function swapRows() {
-    const Index1 = Math.floor(Math.random() * TableContent.length);
-    const Index2 = Math.floor(Math.random() * TableContent.length);
+    const Index1 = Math.floor(Math.random() * tableContent.length);
+    const Index2 = Math.floor(Math.random() * tableContent.length);
 
-    const tmpRow: TableRowData = TableContent[Index1];
-    TableContent[Index1] = TableContent[Index2];
-    TableContent[Index2] = tmpRow;
+    const tmpRow: TableRowData = tableContent[Index1];
+    tableContent[Index1] = tableContent[Index2];
+    tableContent[Index2] = tmpRow;
 
-    setContent([...TableContent]);
+    setContent([...tableContent]);
   }
 
   function clearRows() {
-    TableContent.forEach((element) => {
-      element.id = 0;
-      element.name = "";
-      element.level = 0;
-    });
+    const tmpArray: TableRowData[] = [];
 
-    setContent([...TableContent]);
+    for (let i = 0; i < tableContent.length; i++) {
+      tmpArray.push({
+        id: tableContent[i].id,
+        name: "",
+        level: 0,
+      });
+    }
+
+    setContent([...tmpArray]);
   }
 
   function generateArray() {
     const generatedArray: TableRowData[] = [];
 
     for (let i = 0; i < 5; i++) {
-      const NameIndex: number = Math.floor(Math.random() * NamesTable.length);
-      const LevelIndex: number = Math.floor(Math.random() * NumberTable.length);
+      const nameIndex: number = Math.floor(Math.random() * namesTable.length);
+      const levelIndex: number = Math.floor(Math.random() * numberTable.length);
+
       generatedArray.unshift({
         id: key++,
-        name: NamesTable[NameIndex],
-        level: NumberTable[LevelIndex],
+        name: namesTable[nameIndex],
+        level: numberTable[levelIndex],
       });
     }
 
-    setContent([...generatedArray, ...TableContent]);
+    setContent([...generatedArray]);
   }
 
   useEffect(() => {
@@ -112,19 +132,25 @@ export default function TablePage() {
     <div className={styles["page-wrapper"]}>
       <div className={styles["page-content"]}>
         <div className={styles["v-btn-cont"]}>
-          <button onClick={() => addNRecords(5)}>Add</button>
-          <button onClick={deleteRecord}>Delete</button>
+          <button onClick={() => addNRecords(RECORDS_TO_CREATE)}>
+            Add {RECORDS_TO_CREATE}
+          </button>
+          <button onClick={() => deleteNRecords(RECORDS_TO_DELETE)}>
+            Delete {RECORDS_TO_DELETE}
+          </button>
           <button
             onClick={() => {
-              deleteEveryNthRecord(2);
+              deleteEveryNthRecord(NTH_TO_DELETE);
             }}
           >
-            Delete Nth{" "}
+            Delete {NTH_TO_DELETE}th
           </button>
-          <button onClick={() => updateNthRow(2)}>Update Nth</button>
+          <button onClick={() => updateNthRow(NTH_TO_UPDATE)}>
+            Update {NTH_TO_UPDATE}th
+          </button>
           <button onClick={replaceAllRows}>Replace all</button>
-          <button onClick={swapRows}>Swap rows</button>
-          <button onClick={clearRows}>Clear rows</button>
+          <button onClick={swapRows}>Swap</button>
+          <button onClick={clearRows}>Clear all</button>
         </div>
 
         <div className={styles["table-container"]}>
@@ -134,7 +160,7 @@ export default function TablePage() {
               <div>Name</div>
               <div>Level</div>
             </div>
-            {TableList}
+            {tableList}
           </div>
         </div>
       </div>
