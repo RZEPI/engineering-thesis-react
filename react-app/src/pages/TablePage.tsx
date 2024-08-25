@@ -55,7 +55,7 @@ export default function TablePage() {
     for (let i = 0; i < tmpArray.length; i += n) {
       tmpArray.splice(i--, 1);
     }
-    setContent([...tmpArray]);
+    setContent(tmpArray);
   }
 
   function updateNthRow(n: number) {
@@ -68,7 +68,7 @@ export default function TablePage() {
       };
     }
 
-    setContent([...tmpArray]);
+    setContent(tmpArray);
   }
 
   function replaceAllRows() {
@@ -82,7 +82,7 @@ export default function TablePage() {
       });
     }
 
-    setContent([...tmpArray]);
+    setContent(tmpArray);
   }
 
   function swapRows() {
@@ -93,7 +93,7 @@ export default function TablePage() {
     tableContent[Index1] = tableContent[Index2];
     tableContent[Index2] = tmpRow;
 
-    setContent([...tableContent]);
+    setContent(tableContent);
   }
 
   function clearRows() {
@@ -107,7 +107,7 @@ export default function TablePage() {
       });
     }
 
-    setContent([...tmpArray]);
+    setContent(tmpArray);
   }
 
   function generateArray() {
@@ -124,7 +124,7 @@ export default function TablePage() {
       });
     }
 
-    setContent([...generatedArray]);
+    setContent(generatedArray);
   }
 
   useEffect(() => {
