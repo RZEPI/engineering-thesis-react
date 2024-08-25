@@ -15,6 +15,8 @@ let key: number = 0;
 export default function TablePage() {
   const [tableContent, setContent] = useState<TableRowData[]>([]);
 
+  const rowCount: number = tableContent.length;
+
   const tableList = tableContent.map((tuple) => (
     <TableRow
       className={styles["table-row"]}
@@ -32,6 +34,7 @@ export default function TablePage() {
     for (let i = 0; i < n; i++) {
       nameIndex = Math.floor(Math.random() * namesTable.length);
       levelIndex = Math.floor(Math.random() * numberTable.length);
+
       tmpArray.unshift({
         id: key++,
         name: namesTable[nameIndex],
@@ -151,6 +154,7 @@ export default function TablePage() {
           <button onClick={replaceAllRows}>Replace all</button>
           <button onClick={swapRows}>Swap</button>
           <button onClick={clearRows}>Clear all</button>
+          <span>rows: {rowCount}</span>
         </div>
 
         <div className={styles["table-container"]}>
