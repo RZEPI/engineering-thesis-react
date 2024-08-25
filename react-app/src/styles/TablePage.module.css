@@ -1,6 +1,7 @@
 .page-wrapper {
   box-sizing: border-box;
   width: 100%;
+  height: 80vh;
   display: flex;
   justify-content: center;
 }
@@ -33,14 +34,16 @@ button:active {
 
 .table-container {
   padding: 2em 1em 2em 1em;
+  max-height: 80vh;
 }
 
 .table {
+  max-height: 100%;
   box-sizing: content-box;
   border: 10px solid var(--hover-element-color);
   border-radius: 20px;
   overflow: hidden;
-  background-color: pink;
+  overflow-y: scroll;
 }
 
 .table-header {
