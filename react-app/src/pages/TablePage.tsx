@@ -5,8 +5,8 @@ import TableRow from "../components/UI/TableRow";
 import styles from "../styles/TablePage.module.css";
 import { TableRowData } from "../models/PerfTestArrayRow";
 
-const RECORDS_TO_CREATE: number = 3000;
-const RECORDS_TO_DELETE: number = 1000;
+const RECORDS_TO_CREATE: number = 30_000;
+const RECORDS_TO_DELETE: number = 3_000;
 const NTH_TO_DELETE: number = 2;
 const NTH_TO_UPDATE: number = 2;
 
@@ -86,14 +86,15 @@ export default function TablePage() {
   }
 
   function swapRows() {
-    const Index1 = Math.floor(Math.random() * tableContent.length);
-    const Index2 = Math.floor(Math.random() * tableContent.length);
+    const tmpArray: TableRowData[] = [...tableContent];
 
-    const tmpRow: TableRowData = tableContent[Index1];
-    tableContent[Index1] = tableContent[Index2];
-    tableContent[Index2] = tmpRow;
+    const index1 = Math.floor(Math.random() * tableContent.length);
+    const index2 = Math.floor(Math.random() * tableContent.length);
 
-    setContent(tableContent);
+    tmpArray[index1] = tableContent[index2];
+    tmpArray[index2] = tableContent[index1];
+
+    setContent(tmpArray);
   }
 
   function clearRows() {
