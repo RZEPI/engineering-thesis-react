@@ -1,5 +1,6 @@
 .main-container
 {
+    --flex-element-size: 6em;
     display: grid;
     grid-template-areas: "preview preview form"
                          "preview preview form"

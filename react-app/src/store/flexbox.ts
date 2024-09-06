@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 import { AlignItemsOptions } from '../models/flexbox-generator/AlignItemsOptions';
@@ -58,6 +59,16 @@ const flexSlice = createSlice({
 });
 
 export const flexboxContent = (state: RootState) => state.flexbox.content;
+export const flexboxStyles = (state: RootState) => {
+    const stylesObj: CSSProperties = {
+        flexWrap: state.flexbox.wrapping ? "wrap" : "nowrap",
+        flexDirection: state.flexbox.direction ? "column" : "row",
+        justifyContent: state.flexbox.justifyContent,
+        alignItems: state.flexbox.alignItems
+    }
+    return stylesObj;
+}
+
 export const flexboxActions = flexSlice.actions;
 
 export default flexSlice.reducer;
