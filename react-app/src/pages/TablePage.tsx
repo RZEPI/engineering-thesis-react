@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { numberTable } from "../static/RandomDataTables";
 import { namesTable } from "../static/RandomDataTables";
-import TableRow from "../components/UI/TableRow";
+import TableRow from "../components/TableRow";
 import styles from "../styles/TablePage.module.css";
 import { TableRowData } from "../models/PerfTestArrayRow";
 

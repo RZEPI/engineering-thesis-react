@@ -4,6 +4,7 @@ import RootLayout from "./pages/RootLayout";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import TablePage from "./pages/TablePage";
+import GridPage from "./pages/GridPage";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "TablePage", element: <TablePage /> },
+      { path: "GridPage", element: <GridPage /> },
     ],
     errorElement: <ErrorPage />,
   },
