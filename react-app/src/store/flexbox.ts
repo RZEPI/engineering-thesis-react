@@ -2,7 +2,7 @@ import { CSSProperties } from 'react';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 import { AlignItemsOptions } from '../models/flexbox-generator/AlignItemsOptions';
-import { JustifyContentOptions } from '../models/flexbox-generator/JustifyContentOptions';
+import { ContentOptions } from '../models/flexbox-generator/ContentOptions.ts';
 import { FlexboxElement } from '../models/flexbox-generator/FlexboxElement';
 import { RootState } from '.';
 
@@ -10,17 +10,21 @@ interface FlexboxState
 {
     wrapping: boolean;
     direction: boolean;
-    justifyContent: JustifyContentOptions
+    justifyContent: ContentOptions
     alignItems: AlignItemsOptions
+    alignContent: ContentOptions,
     content: FlexboxElement[]
 }
+
+const DefaultContent:FlexboxElement[] = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
 const initialState:FlexboxState = {
     wrapping: false,
     direction: false,
-    justifyContent: JustifyContentOptions.CENTER,
+    justifyContent: ContentOptions.CENTER,
     alignItems: AlignItemsOptions.CENTER,
-    content: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    alignContent: ContentOptions.CENTER,
+    content: DefaultContent,
 }
 
 const flexSlice = createSlice({
@@ -37,9 +41,13 @@ const flexSlice = createSlice({
         {
             state.alignItems = action.payload;
         },
-        setJustifyContent(state, action: PayloadAction<JustifyContentOptions>)
+        setJustifyContent(state, action: PayloadAction<ContentOptions>)
         {
             state.justifyContent = action.payload;
+        },
+        setAlignContent(state, action: PayloadAction<ContentOptions>)
+        {
+            state.alignContent = action.payload;
         },
         addElement(state)
         {
@@ -66,8 +74,12 @@ export const flexboxStyles = (state: RootState) => {
         justifyContent: state.flexbox.justifyContent,
         alignItems: state.flexbox.alignItems
     }
+    if(state.flexbox.wrapping)
+        stylesObj.alignContent = state.flexbox.alignContent;
     return stylesObj;
 }
+
+export const flexboxWrapping = (state: RootState) => state.flexbox.wrapping;
 
 export const flexboxActions = flexSlice.actions;
 
