@@ -1,3 +1,4 @@
+import CodeListing from "../components/flexbox/CodeListing";
 import FlexboxPreview from "../components/flexbox/FlexboxPreview";
 import FlexboxForm from "../components/flexbox/form/FlexboxForm";
 import Layout from "../components/UI/Layout";
@@ -11,6 +12,7 @@ export default function FlexboxPage() {
         <FlexboxPreview />
         <FlexboxForm />
       </div>
+      <CodeListing />
     </Layout>
   );
 }

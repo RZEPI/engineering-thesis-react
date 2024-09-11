@@ -1,10 +1,10 @@
 import SelectInput from "./SelectInput";
 import ToggleInput from "./ToggleInput";
 
-import { useAppDispatch } from "../../../store/hooks";
-import { flexboxActions } from "../../../store/flexbox";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { flexboxActions, flexboxWrapping } from "../../../store/flexbox";
 
-import { JustifyContentOptions } from "../../../models/flexbox-generator/JustifyContentOptions";
+import { ContentOptions } from "../../../models/flexbox-generator/ContentOptions.ts";
 import { AlignItemsOptions } from "../../../models/flexbox-generator/AlignItemsOptions";
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 
@@ -12,9 +12,10 @@ import styles from "../../../styles/flexbox/FlexboxForm.module.css";
 
 export default function FlexboxForm() {
   const dispatch = useAppDispatch();
+  const wrapping = useAppSelector(flexboxWrapping);
 
-  const justifyContentOptionsList = Object.values(JustifyContentOptions).filter(
-    (value) => isNaN(Number(value)),
+  const contentOptionsList = Object.values(ContentOptions).filter((value) =>
+    isNaN(Number(value)),
   );
   const alignItemsOptionsList = Object.values(AlignItemsOptions).filter(
     (value) => isNaN(Number(value)),
@@ -41,10 +42,10 @@ export default function FlexboxForm() {
   }
 
   function handleJustifyContentChange(chosenOption: string) {
-    handleSelection<JustifyContentOptions>(
+    handleSelection<ContentOptions>(
       chosenOption,
       flexboxActions.setJustifyContent,
-      justifyContentOptionsList,
+      contentOptionsList,
     );
   }
 
@@ -53,6 +54,14 @@ export default function FlexboxForm() {
       chosenOption,
       flexboxActions.setAlignItems,
       alignItemsOptionsList,
+    );
+  }
+
+  function handleAlignContentChange(chosenOption: string) {
+    handleSelection<ContentOptions>(
+      chosenOption,
+      flexboxActions.setAlignContent,
+      contentOptionsList,
     );
   }
 
@@ -74,7 +83,7 @@ export default function FlexboxForm() {
       />
       <SelectInput
         selectHeader="Justify content"
-        optionList={justifyContentOptionsList}
+        optionList={contentOptionsList}
         selectionFunc={handleJustifyContentChange}
       />
       <SelectInput
@@ -82,6 +91,13 @@ export default function FlexboxForm() {
         optionList={alignItemsOptionsList}
         selectionFunc={handleAlignItemsChange}
       />
+      {wrapping && (
+        <SelectInput
+          selectHeader="Align content"
+          optionList={contentOptionsList}
+          selectionFunc={handleAlignContentChange}
+        />
+      )}
 
       <button
         className={styles["add-button"]}
