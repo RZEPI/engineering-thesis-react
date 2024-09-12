@@ -1,5 +1,5 @@
 export type ToggleInputProps = {
-    inputHeader: string
-    choices: [string, string]
-    toggleFunc: () => void
-}
+  inputHeader: string;
+  choices: [string, string];
+  toggleFunc: () => void;
+};

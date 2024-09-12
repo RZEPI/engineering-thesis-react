@@ -1,7 +1,11 @@
-import { flexboxContent, flexboxStyles, flexboxActions } from "../../store/flexbox";
+import {
+  flexboxContent,
+  flexboxStyles,
+  flexboxActions,
+} from "../../store/flexbox";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
-import styles from '../../styles/flexbox/FlexboxPreview.module.css'
+import styles from "../../styles/flexbox/FlexboxPreview.module.css";
 
 export default function FlexboxPreview() {
   const content = useAppSelector(flexboxContent);
@@ -11,7 +15,10 @@ export default function FlexboxPreview() {
     <div className={styles.preview} style={containerStyles}>
       {content.map((element) => {
         return (
-          <div key={element.id} onClick={()=>dispatch(flexboxActions.removeElement(element.id))}>
+          <div
+            key={element.id}
+            onClick={() => dispatch(flexboxActions.removeElement(element.id))}
+          >
             <p>{element.id}</p>
           </div>
         );

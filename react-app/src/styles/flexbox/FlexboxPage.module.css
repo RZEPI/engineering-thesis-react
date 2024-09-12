@@ -1,12 +1,12 @@
-.main-container
-{
-    --flex-element-size: 6em;
-    display: grid;
-    grid-template-areas: "preview preview form"
-                         "preview preview form"
-                         "preview preview form"
-                         "listing listing listing";
-    margin: 1em;
-    width: 60vw;
-    height: 50vh;
+.main-container {
+  --flex-element-size: 6em;
+  display: grid;
+  grid-template-areas:
+    "preview preview form"
+    "preview preview form"
+    "preview preview form"
+    "listing listing listing";
+  margin: 1em;
+  width: 60vw;
+  height: 50vh;
 }
