@@ -1,5 +1,5 @@
 export type SelectInputProps = {
-    selectHeader: string,
-    optionList: string[],
-    selectionFunc: (chosenOption:string) => void
-}
+  selectHeader: string;
+  optionList: string[];
+  selectionFunc: (chosenOption: string) => void;
+};

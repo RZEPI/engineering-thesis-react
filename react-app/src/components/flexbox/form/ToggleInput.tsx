@@ -1,13 +1,13 @@
 import ToggleSwitch from "../../UI/ToggleSwitch";
 
-import styles from "../../../styles/flexbox/ToggleInput.module.css"
+import styles from "../../../styles/flexbox/ToggleInput.module.css";
 
 import { ToggleInputProps } from "../../../models/flexbox-generator/ToggleInputProps";
 
 export default function ToggleInput({
   inputHeader,
   choices,
-  toggleFunc
+  toggleFunc,
 }: ToggleInputProps) {
   const inputName = inputHeader.toLowerCase().replace(" ", "-");
   return (

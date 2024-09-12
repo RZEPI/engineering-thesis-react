@@ -1,4 +1,4 @@
 export type ToggleSwitchProps = {
-    inputName: string,
-    toggleFunc: () => void
-}
+  inputName: string;
+  toggleFunc: () => void;
+};

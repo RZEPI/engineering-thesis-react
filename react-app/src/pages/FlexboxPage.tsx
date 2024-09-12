@@ -3,7 +3,7 @@ import FlexboxPreview from "../components/flexbox/FlexboxPreview";
 import FlexboxForm from "../components/flexbox/form/FlexboxForm";
 import Layout from "../components/UI/Layout";
 
-import styles from '../styles/flexbox/FlexboxPage.module.css'
+import styles from "../styles/flexbox/FlexboxPage.module.css";
 
 export default function FlexboxPage() {
   return (

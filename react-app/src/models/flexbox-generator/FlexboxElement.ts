@@ -1,3 +1,3 @@
 export type FlexboxElement = {
-    id: number
-}
+  id: number;
+};
