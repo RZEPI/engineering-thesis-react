@@ -9,7 +9,7 @@ body {
 .page-wrapper {
   box-sizing: border-box;
   width: 100%;
-  height: 80vh;
+  min-height: 80vh;
   display: flex;
   justify-content: center;
   background-color: red;
@@ -25,13 +25,14 @@ body {
 }
 .grid-main {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 100px;
+  grid-template-columns: repeat(10, var(--short-element-side));
+  grid-auto-rows: var(--short-element-side);
   grid-auto-flow: row;
   align-items: top;
   justify-items: start;
   border: 2px solid black;
   width: 1500px;
+  grid-gap: 10px;
 }
 .element {
   box-sizing: border-box;
