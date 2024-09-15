@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "/flexbox", element: <FlexboxPage /> },
-      { path: "/table-page", element: <TablePage /> },
+      { path: "/table", element: <TablePage /> },
     ],
     errorElement: <ErrorPage />,
   },
