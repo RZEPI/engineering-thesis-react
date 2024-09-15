@@ -5,7 +5,26 @@ import GridConfigButton from "./UI/GridButton";
 import GridButtonWindow from "./GridButtonWindow";
 
 export default function Grid() {
-  const generateElements = () => {
+  const numberOfElements = 20;
+
+  function getRandomAspect() {
+    const aspects = selectedAspects.filter((e) => {
+      return e.selected == true;
+    });
+
+    if (aspects.length == 0) {
+      return styles[selectedAspects[0].aspect];
+    }
+    const randomIndex = Math.floor(Math.random() * aspects.length);
+    return styles[aspects[randomIndex].aspect];
+  }
+
+  function getRandomColor() {
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+  }
+
+  function generateElements() {
     const color: Array<Array<number>> = [];
 
     for (let i = 0; i < numberOfElements; i++) {
@@ -35,7 +54,7 @@ export default function Grid() {
         <span>{index}</span>
       </div>
     ));
-  };
+  }
 
   const [isDense, setDense] = useState<boolean>(false);
 
@@ -48,13 +67,6 @@ export default function Grid() {
   ]);
 
   const [elements, setElements] = useState(generateElements);
-
-  const numberOfElements = 20;
-
-  const getRandomColor = () => {
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-  };
 
   function selectAspectID(id: number) {
     const newAspects = [...selectedAspects];
@@ -72,33 +84,18 @@ export default function Grid() {
     return retVal;
   }
 
-  const aspectButtons = selectedAspects.map((el) => {
+  const aspectButtons = selectedAspects.map((el, index) => {
     return (
-      <>
-        <button
-          onClick={() => {
-            selectAspectID(el.id);
-          }}
-          style={el.selected ? {} : { textDecoration: "line-through" }}
-        >
-          {el.aspect}
-        </button>
-      </>
+      <GridConfigButton
+        key={index}
+        name={el.aspect}
+        handleClick={() => {
+          selectAspectID(el.id);
+        }}
+        style={el.selected ? {} : { textDecoration: "line-through" }}
+      />
     );
   });
-
-  const getRandomAspect = () => {
-    const aspects = selectedAspects.filter((e) => {
-      return e.selected == true;
-    });
-
-    if (aspects.length == 0) {
-      return styles[selectedAspects[0].aspect];
-    }
-    const randomIndex = Math.floor(Math.random() * aspects.length);
-    return styles[aspects[randomIndex].aspect];
-  };
-
 
   return (
     <div style={{ width: "100%", backgroundColor: "inherit" }}>
