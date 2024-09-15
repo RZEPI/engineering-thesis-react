@@ -7,13 +7,31 @@ import clipboardSign from "../../assets/clipboard-outline-svgrepo-com.svg";
 
 export default function CodeListing() {
   const flexClasses = useAppSelector(flexboxStyles);
-  const propertyEntries = Object.entries(flexClasses);
+
+  const parsedEntries: { propertyKey: string; propertyValue: string }[] = [];
+
+  for (const [propertyKey, propertyValue] of Object.entries(flexClasses)) {
+    let upperCaseCharIdx = null;
+    let idx = 0;
+    for (const character of propertyKey) {
+      const code = character.charCodeAt(0);
+      if (code >= 65 && code <= 90) upperCaseCharIdx = idx;
+      idx++;
+    }
+    let parsedKey;
+    if (upperCaseCharIdx)
+      parsedKey =
+        `${propertyKey.substring(0, upperCaseCharIdx)}-${propertyKey.substring(upperCaseCharIdx)}`.toLowerCase();
+    else parsedKey = propertyKey;
+
+    parsedEntries.unshift({ propertyKey: parsedKey, propertyValue });
+  }
 
   function copyToClipboard() {
     let dataToClipboard: string;
     dataToClipboard = "{\n";
-    for (const [propertyKey, propertyValue] of propertyEntries) {
-      dataToClipboard += `\t${propertyKey}: ${propertyValue};\n`;
+    for (const entry of parsedEntries) {
+      dataToClipboard += `\t${entry.propertyKey}: ${entry.propertyValue};\n`;
     }
     dataToClipboard += "}";
 
@@ -30,10 +48,15 @@ export default function CodeListing() {
       </header>
       <ul className={styles["code-listing"]}>
         <li>{"{"}</li>
-        {propertyEntries.map(([propertyKey, propertyValue]) => (
-          <li key={propertyKey}>
-            <span className={styles.property}>&emsp;&emsp;{propertyKey}:</span>
-            <span className={styles.value}>&nbsp;&nbsp;{propertyValue}</span>;
+        {parsedEntries.map((entry) => (
+          <li key={entry.propertyKey}>
+            <span className={styles.property}>
+              &emsp;&emsp;{entry.propertyKey}:
+            </span>
+            <span className={styles.value}>
+              &nbsp;&nbsp;{entry.propertyValue}
+            </span>
+            ;
           </li>
         ))}
         <li>{"}"}</li>
