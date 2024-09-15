@@ -12,8 +12,7 @@
 }
 
 @media (max-height: 1300px) {
-  .main-container
-  {
+  .main-container {
     height: 70vh;
   }
 }
