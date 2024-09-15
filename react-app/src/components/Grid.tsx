@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "../styles/GridPage.module.css";
 import { colors } from "../static/GridElements";
+import GridConfigButton from "./UI/GridButton";
 
 export default function Grid() {
   const getRandomColor = () => {
@@ -46,7 +47,6 @@ export default function Grid() {
       </>
     );
   });
-
 
   const getRandomAspect = () => {
     const aspects = selectedAspects.filter((e) => {
@@ -108,20 +108,18 @@ export default function Grid() {
         <div className={styles["v-btn-window"]}>
           <span className={styles["title"]}>Grid options</span>
           <div className={styles["v-btn-cont"]}>
-            <button
-              onClick={() => {
+            <GridConfigButton
+              name="Generate"
+              handleClick={() => {
                 setElements(generateElements);
               }}
-            >
-              Generate
-            </button>
-            <button
-              onClick={() => {
+            />
+            <GridConfigButton
+              name={isDense ? "dense" : "row"}
+              handleClick={() => {
                 setDense(!isDense);
               }}
-            >
-              {isDense ? "dense" : "row"}
-            </button>
+            />
           </div>
         </div>
       </div>
