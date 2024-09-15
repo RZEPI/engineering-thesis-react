@@ -1,3 +1,4 @@
+import { FlexboxElement } from "../../models/flexbox-generator/FlexboxElement";
 import {
   flexboxContent,
   flexboxStyles,
@@ -13,7 +14,7 @@ export default function FlexboxPreview() {
   const dispatch = useAppDispatch();
   return (
     <div className={styles.preview} style={containerStyles}>
-      {content.map((element) => {
+      {content.map((element:FlexboxElement) => {
         return (
           <div
             key={element.id}
