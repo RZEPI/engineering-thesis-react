@@ -7,7 +7,7 @@ import styles from "../styles/flexbox/FlexboxPage.module.css";
 
 export default function FlexboxPage() {
   return (
-    <Layout title="Flexbox Testing">
+    <Layout title="Flexbox Generator">
       <div className={styles["main-container"]}>
         <FlexboxPreview />
         <FlexboxForm />

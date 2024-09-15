@@ -9,4 +9,8 @@ export const sites: Array<SidebarLinkProps> = [
     label: "Flexbox",
     link: "/flexbox",
   },
+  {
+    label: "Table",
+    link: "/TablePage",
+  },
 ];
