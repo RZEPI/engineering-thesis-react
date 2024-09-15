@@ -6,4 +6,11 @@ export const aspects = [
   "aspect_1_to_3",
 ];
 
-export const colors = ["red", "pink", "yellow", "blue", "green", "purple"];
+export const colors = [
+  [255, 0, 0],
+  [0, 255, 0],
+  [0, 0, 255],
+  [255, 255, 0],
+  [255, 0, 255],
+  [0, 255, 255],
+];

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styles from "../styles/GridPage.module.css";
-import { aspects } from "../static/GridElements";
 import { colors } from "../static/GridElements";
 
 export default function Grid() {
@@ -28,21 +27,26 @@ export default function Grid() {
     setSelectedAspects(newAspects);
   }
 
+  function subtractWithSaturation8bit(amount: number, value: number) {
+    const retVal = value - amount < 0 ? 0 : value - amount;
+    return retVal;
+  }
+
   const aspectButtons = selectedAspects.map((el) => {
     return (
       <>
-        <br />
         <button
           onClick={() => {
             selectAspectID(el.id);
           }}
-          style={el.selected ? null : { textDecoration: "line-through" }}
+          style={el.selected ? {} : { textDecoration: "line-through" }}
         >
           {el.aspect}
         </button>
       </>
     );
   });
+
 
   const getRandomAspect = () => {
     const aspects = selectedAspects.filter((e) => {
@@ -60,42 +64,71 @@ export default function Grid() {
   const numberOfElements = 20;
 
   const generateElements = () => {
+    const color: Array<Array<number>> = [];
+
+    for (let i = 0; i < numberOfElements; i++) {
+      color.push(getRandomColor());
+    }
+
     return Array.from({ length: numberOfElements }).map((_, index) => (
-      <span
+      <div
         key={index}
         className={`${styles["element"]} ${getRandomAspect()}`}
-        style={{ backgroundColor: getRandomColor() }}
+        style={{
+          backgroundColor: "rgb(" + color[index].join(", ") + ")",
+          borderColor:
+            "rgb(" +
+            subtractWithSaturation8bit(60, color[index][0]).toString() +
+            ", " +
+            subtractWithSaturation8bit(60, color[index][1]).toString() +
+            ", " +
+            subtractWithSaturation8bit(60, color[index][2]).toString() +
+            ")",
+          textAlign: "center",
+          alignContent: "center",
+          fontSize: "2rem",
+          color: "black",
+        }}
       >
-        {index}
-      </span>
+        <span>{index}</span>
+      </div>
     ));
   };
 
   const [elements, setElements] = useState(generateElements);
 
   return (
-    <div>
-      <button
-        onClick={() => {
-          setDense(!isDense);
-        }}
-      >
-        {isDense ? "dense" : "row"}
-      </button>
-      <div>
-        <span>Aspects:</span>
-        {aspectButtons}
+    <div style={{ width: "100%", backgroundColor: "inherit" }}>
+      <div className={styles["windows-container"]}>
+        <div className={styles["v-btn-window"]}>
+          <span className={styles["title"]}>Aspects</span>
+          <div className={styles["v-btn-cont"]}>{aspectButtons}</div>
+        </div>
+
+        <div className={styles["v-btn-window"]}>
+          <span className={styles["title"]}>Grid options</span>
+          <div className={styles["v-btn-cont"]}>
+            <button
+              onClick={() => {
+                setElements(generateElements);
+              }}
+            >
+              Generate
+            </button>
+            <button
+              onClick={() => {
+                setDense(!isDense);
+              }}
+            >
+              {isDense ? "dense" : "row"}
+            </button>
+          </div>
+        </div>
       </div>
-      <button
-        onClick={() => {
-          setElements(generateElements);
-        }}
-      >
-        Generate
-      </button>
+
       <div
         className={styles["grid-main"]}
-        style={isDense ? { gridAutoFlow: "dense" } : null}
+        style={isDense ? { gridAutoFlow: "dense" } : {}}
       >
         {elements}
       </div>
