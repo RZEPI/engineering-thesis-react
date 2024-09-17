@@ -1,4 +1,4 @@
-import { SidebarLinkProps } from "../../../models/SidebarLinks";
+import { SidebarLinkProps } from "../../../models/SidebarLink";
 import { Link, useLocation } from "react-router-dom";
 
 import styles from "../../../styles/SidebarLink.module.css";

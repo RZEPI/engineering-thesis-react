@@ -1,4 +1,4 @@
-import { SidebarLinkProps } from "../models/SidebarLinks";
+import { SidebarLinkProps } from "../models/SidebarLink";
 
 export const sites: Array<SidebarLinkProps> = [
   {
@@ -6,7 +6,11 @@ export const sites: Array<SidebarLinkProps> = [
     link: "/",
   },
   {
+    label: "Flexbox",
+    link: "/flexbox",
+  },
+  {
     label: "Table",
     link: "/TablePage",
-  },
+  }
 ];

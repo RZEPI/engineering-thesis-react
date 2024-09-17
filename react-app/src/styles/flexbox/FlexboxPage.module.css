@@ -1,0 +1,11 @@
+.main-container
+{
+    display: grid;
+    grid-template-areas: "preview preview form"
+                         "preview preview form"
+                         "preview preview form"
+                         "listing listing listing";
+    margin: 1em;
+    width: 60vw;
+    height: 50vh;
+}
