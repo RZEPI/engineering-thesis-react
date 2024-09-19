@@ -45,5 +45,6 @@
 }
 .preview div > p {
   font-size: calc(var(--flex-element-size) / 3);
+  cursor:default;
   font-weight: 700;
 }

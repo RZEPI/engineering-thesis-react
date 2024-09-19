@@ -5,6 +5,7 @@ import { AlignItemsOptions } from "../models/flexbox-generator/AlignItemsOptions
 import { ContentOptions } from "../models/flexbox-generator/ContentOptions.ts";
 import { FlexboxElement } from "../models/flexbox-generator/FlexboxElement";
 import { RootState } from ".";
+import { drawColor } from "../util/util.ts";
 
 interface FlexboxState {
   wrapping: boolean;
@@ -14,8 +15,14 @@ interface FlexboxState {
   alignContent: ContentOptions;
   content: FlexboxElement[];
 }
+const INIT_AMONT_OF_ELEMENTS = 5000
 
-const DefaultContent: FlexboxElement[] = [{ id: 1 }, { id: 2 }, { id: 3 }];
+const defaultContent: FlexboxElement[] = [];
+
+for( let i = 1; i <= INIT_AMONT_OF_ELEMENTS; i++ ){
+  const color = drawColor();
+  defaultContent.push({id: i, color: color});
+}
 
 const initialState: FlexboxState = {
   wrapping: false,
@@ -23,7 +30,7 @@ const initialState: FlexboxState = {
   justifyContent: ContentOptions.CENTER,
   alignItems: AlignItemsOptions.CENTER,
   alignContent: ContentOptions.CENTER,
-  content: DefaultContent,
+  content: defaultContent,
 };
 
 const flexSlice = createSlice({
@@ -50,7 +57,7 @@ const flexSlice = createSlice({
       let lastElementId = 0;
       if (content.length !== 0) lastElementId = content[content.length - 1].id;
 
-      state.content.push({ id: lastElementId + 1 });
+      state.content.push({ id: lastElementId + 1, color: drawColor() });
     },
     removeElement(state, action: PayloadAction<number>) {
       const content = state.content;

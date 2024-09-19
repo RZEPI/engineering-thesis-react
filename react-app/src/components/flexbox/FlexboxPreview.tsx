@@ -18,6 +18,7 @@ export default function FlexboxPreview() {
         return (
           <div
             key={element.id}
+            style={{ backgroundColor: element.color }}
             onClick={() => dispatch(flexboxActions.removeElement(element.id))}
           >
             <p>{element.id}</p>
