@@ -3,3 +3,5 @@
 - rekurencyjne renderowanie komponentów w głąb i przekazywanie propów
 - zagnieżdżanie nodów w tabeli 
 - porównanie Context API z Redux'em(React) i z Vuex(Vue)
+
+Chcielibyśmy również spytać czy może Pan zasugerować jakieś rozwiązania zaimplementowane we frameworkach, które my pominęliśmy, a mogłyby stanowić wartość w naszej pracy inżynierskiej?
