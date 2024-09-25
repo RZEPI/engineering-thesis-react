@@ -1,5 +1,5 @@
 - filtrowanie rekordów w tabeli
 - praca z dostarczonym przez użytkownika plikiem graficznym
 - rekurencyjne renderowanie komponentów w głąb i przekazywanie propów
-- zagnieżdżanie w nodów w tabeli 
-- porówanienie Context API z Redux'em(React) i z Vuex(Vue)
+- zagnieżdżanie nodów w tabeli 
+- porównanie Context API z Redux'em(React) i z Vuex(Vue)
