@@ -1,2 +1,2 @@
-Flexbox generator -> porówanie Vuex i Redux, aktualizacja stanu w globalnym kontekście, aktualizacja stylów CSS dla komponentu
+Flexbox generator -> porównanie Vuex i Redux, aktualizacja stanu w globalnym kontekście, aktualizacja stylów CSS dla komponentu
 Table page -> porównanie operacji na dużych zbiorach węzłów
