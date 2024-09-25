@@ -109,6 +109,21 @@ button:active {
   background-color: var(--active-element-color);
 }
 
+.code-listing-wrapper {
+  width: 100%;
+  padding: 2em;
+  background-color: rgb(0, 60, 55);
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.code-listing {
+  
+  width: 100%;
+
+
+}
+
 .aspect_1_to_2 {
   grid-column: span 2;
 }

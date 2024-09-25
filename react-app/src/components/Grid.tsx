@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "../styles/GridPage.module.css";
 import { colors } from "../static/GridElements";
 import GridConfigButton from "./UI/GridButton";
@@ -6,6 +6,10 @@ import GridButtonWindow from "./GridButtonWindow";
 
 export default function Grid() {
   const numberOfElements = 20;
+
+  const [listing, setListing] = useState('code listing');
+
+  const gridRef = useRef(null);
 
   function getRandomAspect() {
     const aspects = selectedAspects.filter((e) => {
@@ -117,12 +121,31 @@ export default function Grid() {
         </GridButtonWindow>
       </div>
 
-      <div
+      <div className={styles["code-listing-wrapper"]}>
+        <div className={styles["code-listing"]}>
+          &#123;
+            <br />
+              <span style={{paddingLeft : '2em'}}>grid-auto-flow : { isDense ? "dense" : "row" }</span>
+            <br />
+            <span> refka: {gridRef.current != null ? gridRef.current.style : ""}</span>
+            <button onClick={() => {
+              console.log(gridRef.current.style[gridRef.current.style[0]])
+              }}>Console log ref style</button>
+          &#125;
+        </div>
+      </div>
+
+      <div ref={gridRef}
         className={styles["grid-main"]}
-        style={isDense ? { gridAutoFlow: "dense" } : {}}
+        style={
+          isDense ? { gridAutoFlow: "dense", backgroundColor:"red" } : {}
+          
+        }
       >
         {elements}
       </div>
+
+
     </div>
   );
 }
