@@ -11,6 +11,7 @@
 }
 .link {
   list-style-type: none;
+  max-height: 5vh;
   width: 100%;
 }
 .link:hover {
@@ -20,4 +21,12 @@
 .link a.active {
   color: #fff;
   background-color: var(--active-element-color);
+}
+
+.link span {
+  min-width: 20vw;
+}
+
+.link img {
+  height: calc(3vh - 0.3em);
 }
