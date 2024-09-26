@@ -12,6 +12,6 @@ export const sites: Array<SidebarLinkProps> = [
   },
   {
     label: "Table",
-    link: "/TablePage",
+    link: "/table",
   }
 ];
