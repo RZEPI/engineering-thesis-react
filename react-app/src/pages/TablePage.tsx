@@ -3,7 +3,7 @@ import { useState } from "react";
 import TableActions from "../components/table/TableActions";
 import TableContent from "../components/table/TableContent";
 
-import { TableRowData } from "../models/TableRowData";
+import { TableRowData } from "../models/table/TableRowData";
 import styles from "../styles/table/TablePage.module.css";
 
 export default function TablePage() {

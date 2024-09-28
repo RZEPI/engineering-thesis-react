@@ -1,14 +1,9 @@
 import { useState } from "react";
-import { TableRowData } from "../../models/TableRowData.ts";
+import { TableRowProps } from "../../models/table/TableRowProps.ts";
 
 import styles from "../../styles/table/TableRow.module.css";
 
-export default function TableRow({
-  t,
-}: {
-  t: TableRowData;
-  className: string;
-}) {
+export default function TableRow({ rowData }: TableRowProps) {
   const [focus, setFocus] = useState<boolean>(false);
 
   function onClick() {
@@ -20,9 +15,9 @@ export default function TableRow({
 
   return (
     <div className={classNames} onClick={onClick}>
-      <div className={styles["table-cell"]}>{t.id}</div>
-      <div className={styles["table-cell"]}>{t.name}</div>
-      <div className={styles["table-cell"]}>{t.level}</div>
+      <div className={styles["table-cell"]}>{rowData.id}</div>
+      <div className={styles["table-cell"]}>{rowData.name}</div>
+      <div className={styles["table-cell"]}>{rowData.level}</div>
     </div>
   );
 }

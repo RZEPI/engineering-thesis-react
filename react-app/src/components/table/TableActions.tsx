@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { numberTable } from "../../static/RandomDataTables";
 import { namesTable } from "../../static/RandomDataTables";
-import { TableRowData } from "../../models/TableRowData";
-import { TableActionsProps } from "../../models/TableActionsProps";
+import { TableRowData } from "../../models/table/TableRowData";
+import { TableActionsProps } from "../../models/table/TableActionsProps";
 
 import styles from "../../styles/table/TableActions.module.css";
 

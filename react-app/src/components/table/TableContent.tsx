@@ -1,14 +1,13 @@
-import { TableContentProps } from "../../models/TableContentProps";
+import { TableContentProps } from "../../models/table/TableContentProps";
 import TableRow from "./TableRow";
 
 import styles from "../../styles/table/TableContent.module.css";
 
 export default function TableContent({ tableContent }: TableContentProps) {
-    const tableList = tableContent.map((tuple) => (
+    const tableList = tableContent.map((row) => (
         <TableRow
-          className={styles["table-row"]}
-          t={tuple}
-          key={tuple.id}
+          rowData={row}
+          key={row.id}
         ></TableRow>
       ));
 
