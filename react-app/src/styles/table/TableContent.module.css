@@ -1,0 +1,27 @@
+.table-container {
+    padding: 2em 1em 2em 1em;
+    max-height: 80vh;
+  }
+
+  .table {
+    max-height: 100%;
+    box-sizing: content-box;
+    border: 10px solid var(--hover-element-color);
+    border-radius: 20px;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+
+  .table-header {
+    display: grid;
+    grid-template-columns: [id] 20% [name] 40% [level] 40%;
+    background-color: var(--hover-element-color);
+    width: 100%;
+    padding: 0.25em 0em 0.25em 0em;
+  }
+
+  .table-header div {
+    padding-left: 0.75em;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
