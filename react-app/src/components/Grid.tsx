@@ -1,15 +1,13 @@
-import { useRef, useState } from "react";
+import {  useState } from "react";
 import styles from "../styles/GridPage.module.css";
 import { colors } from "../static/GridElements";
 import GridConfigButton from "./UI/GridButton";
 import GridButtonWindow from "./GridButtonWindow";
+import { subtractWithSaturation8bit } from "../utils.tsx"
 
 export default function Grid() {
   const numberOfElements = 20;
 
-  const [listing, setListing] = useState('code listing');
-
-  const gridRef = useRef(null);
 
   function getRandomAspect() {
     const aspects = selectedAspects.filter((e) => {
@@ -83,11 +81,6 @@ export default function Grid() {
     setSelectedAspects(newAspects);
   }
 
-  function subtractWithSaturation8bit(amount: number, value: number) {
-    const retVal = value - amount < 0 ? 0 : value - amount;
-    return retVal;
-  }
-
   const aspectButtons = selectedAspects.map((el, index) => {
     return (
       <GridConfigButton
@@ -102,6 +95,7 @@ export default function Grid() {
   });
 
   return (
+    // wywalic te komponenty stad, to ma byc sam grid!!
     <div style={{ width: "100%", backgroundColor: "inherit" }}>
       <div className={styles["windows-container"]}>
         <GridButtonWindow title="Aspects">{aspectButtons}</GridButtonWindow>
@@ -127,19 +121,16 @@ export default function Grid() {
             <br />
               <span style={{paddingLeft : '2em'}}>grid-auto-flow : { isDense ? "dense" : "row" }</span>
             <br />
-            <span> refka: {gridRef.current != null ? gridRef.current.style : ""}</span>
             <button onClick={() => {
-              console.log(gridRef.current.style[gridRef.current.style[0]])
               }}>Console log ref style</button>
           &#125;
         </div>
       </div>
 
-      <div ref={gridRef}
+      <div
         className={styles["grid-main"]}
         style={
           isDense ? { gridAutoFlow: "dense", backgroundColor:"red" } : {}
-          
         }
       >
         {elements}
