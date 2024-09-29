@@ -12,4 +12,5 @@ export const namesTable: string[] = [
   "Ola",
   "Ala",
   "Łukasz",
+  "Paweł"
 ];

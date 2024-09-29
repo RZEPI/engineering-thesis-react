@@ -1,0 +1,10 @@
+.numeric-input{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.numeric-input input{
+    width: 60%;
+    font-size: 1.5em;
+    padding: 0.3em;
+    border-radius: 0.4em;
+}

@@ -23,7 +23,9 @@ export default function TablePage() {
       max: undefined,
       isOpen: false,
     },
-    name: [],
+    name: namesTable.map((name) => {
+      return {value: name, isChecked: true};
+    }),
     level: {
       min: undefined,
       max: undefined,
@@ -163,7 +165,7 @@ export default function TablePage() {
 
   return (
     <>
-    <TableFilterModal ref={ref} filter={tableFilter}/>
+    <TableFilterModal ref={ref} filter={tableFilter} setFilter={setFilter}/>
     <div className={styles["page-wrapper"]}>
       <div className={styles["page-content"]}>
         <TableActions tableContent={tableContent} actionFunctions={actionFunctions}/>
