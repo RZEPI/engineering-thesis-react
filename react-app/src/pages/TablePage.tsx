@@ -6,7 +6,11 @@ import TableFilterModal from "../components/table/TableFilterModal";
 
 import { TableRowData } from "../models/table/TableRowData";
 import { DialogHandle } from "../models/DialogHandle";
-import { TableFilter } from "../models/table/TableFilter";
+import {
+  TableFilter,
+  IntFilter,
+  StringFilter,
+} from "../models/table/TableFilter";
 
 import { numberTable } from "../static/RandomDataTables";
 import { namesTable } from "../static/RandomDataTables";
@@ -24,7 +28,7 @@ export default function TablePage() {
       isOpen: false,
     },
     name: namesTable.map((name) => {
-      return {value: name, isChecked: true};
+      return { value: name, isChecked: true };
     }),
     level: {
       min: undefined,
@@ -44,7 +48,9 @@ export default function TablePage() {
     name: "Name",
     level: 0,
   };
-  const tableFields = Object.keys(tableDummyRow).map((key) => key.toUpperCase());
+  const tableFields = Object.keys(tableDummyRow).map((key) =>
+    key.toUpperCase(),
+  );
 
   function generateArray() {
     const generatedArray: TableRowData[] = [];
@@ -163,15 +169,71 @@ export default function TablePage() {
     clearRows,
   };
 
+  function checkIfValueInRangeClosed(
+    value: number,
+    filter: IntFilter,
+  ): boolean {
+    if (filter.min !== undefined && filter.min >= value) return false;
+    if (filter.max !== undefined && filter.max <= value) return false;
+
+    return true;
+  }
+
+  function checkIfValueInRangeOpen(value: number, filter: IntFilter): boolean {
+    if (filter.min !== undefined && filter.min > value) return false;
+    if (filter.max !== undefined && filter.max < value) return false;
+
+    return true;
+  }
+
+  function checkIfValueIsInFilterRange(
+    value: number,
+    filter: IntFilter,
+  ): boolean {
+    if (filter.isOpen) {
+      return checkIfValueInRangeOpen(value, filter);
+    } else {
+      return checkIfValueInRangeClosed(value, filter);
+    }
+  }
+
+  function checkIfNameIsInFilter(
+    givenName: string,
+    filter: StringFilter[],
+  ): boolean {
+    return (
+      filter.find((name) => name.value === givenName && name.isChecked) !==
+      undefined
+    );
+  }
+
+  const filteredTableContent = tableContent.filter((row) => {
+    if (!checkIfValueIsInFilterRange(row.id, tableFilter.id)) return false;
+
+    if (!checkIfValueIsInFilterRange(row.level, tableFilter.level))
+      return false;
+
+    if (!checkIfNameIsInFilter(row.name, tableFilter.name)) return false;
+
+    return true;
+  });
+
   return (
     <>
-    <TableFilterModal ref={ref} filter={tableFilter} setFilter={setFilter}/>
-    <div className={styles["page-wrapper"]}>
-      <div className={styles["page-content"]}>
-        <TableActions tableContent={tableContent} actionFunctions={actionFunctions}/>
-        <TableContent tableContent={tableContent} tableFields={tableFields} openFilterDialog={openFilterModal}/>
+      <TableFilterModal ref={ref} filter={tableFilter} setFilter={setFilter} />
+      <div className={styles["page-wrapper"]}>
+        <div className={styles["page-content"]}>
+          <TableActions
+            tableContent={filteredTableContent}
+            actionFunctions={actionFunctions}
+          />
+          <TableContent
+            tableContent={filteredTableContent}
+            tableFields={tableFields}
+            openFilterDialog={openFilterModal}
+          />
+        </div>
       </div>
-    </div>
     </>
   );
 }

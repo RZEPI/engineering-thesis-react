@@ -3,7 +3,7 @@ import { StringFilterInputProps } from "../../models/table/StringFilterInputProp
 import styles from "../../styles/table/StringFilterInput.module.css";
 
 export default function StringFilterInput({
-  className=undefined,
+  className,
   filterValue,
   handleChange,
 }: StringFilterInputProps) {
@@ -15,12 +15,13 @@ export default function StringFilterInput({
     <li className={styles["string-input"]}>
       <input
         type="checkbox"
+        id={className}
         className={className}
         checked={filterValue.isChecked}
         value={filterValue.value}
         onChange={handleNameCheckboxChange}
       />
-      <label>{filterValue.value}</label>
+      <label htmlFor={className}>{filterValue.value}</label>
     </li>
   );
 }

@@ -50,6 +50,7 @@ const TableFilterModal = forwardRef<DialogHandle, TableFilterModalProps>(
           {filter.name.map((nameFilter) => {
             return (
               <StringFilterInput
+                className={nameFilter.value}
                 filterValue={nameFilter}
                 handleChange={handleNameCheckboxChange}
                 key={nameFilter.value}
