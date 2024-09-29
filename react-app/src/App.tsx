@@ -4,7 +4,7 @@ import RootLayout from "./pages/RootLayout";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import TablePage from "./pages/TablePage";
-import GridPage from "./pages/GridPage";
+import GridPage from "./components/GridPage";
 
 const router = createBrowserRouter([
   {
