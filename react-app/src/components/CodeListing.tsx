@@ -7,11 +7,20 @@ export function CodeListing({ cssProps }: { cssProps: CSSProperties }) {
       &#123;
       <br />
       <span style={{ paddingLeft: "2em" }}>
-        grid-auto-flow : {cssProps.gridAutoFlow}
+        {" "}
+        grid-auto-flow : {cssProps.gridAutoFlow}{" "}
       </span>
       <br />
-      {/* <button onClick={() => {
-              }}>Console log ref style</button> */}
+      <span style={{ paddingLeft: "2em" }}>
+        {" "}
+        grid-template-columns : {cssProps.gridTemplateColumns}{" "}
+      </span>
+      <br />
+      <span style={{ paddingLeft: "2em" }}>
+        {" "}
+        grid-auto-rows : {cssProps.gridAutoRows}{" "}
+      </span>
+      <br />
       &#125;
     </div>
   );
