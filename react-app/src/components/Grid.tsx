@@ -11,7 +11,14 @@ export default function Grid({
   return (
     <div
       className={styles["grid-main"]}
-      style={{ gridAutoFlow: cssProps.gridAutoFlow }}
+      style={{
+        gridAutoFlow: cssProps.gridAutoFlow?.toString(),
+        gridTemplateColumns:
+          "repeat(auto-fill," +
+          cssProps.gridTemplateColumns?.toString() +
+          "px)",
+        gridAutoRows: cssProps.gridAutoRows?.toString() + "px",
+      }}
     >
       {children}
     </div>

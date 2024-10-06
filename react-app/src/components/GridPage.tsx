@@ -3,9 +3,12 @@ import styles from "../styles/GridPage.module.css";
 import { colors } from "../static/GridElements";
 import GridConfigButton from "./UI/GridButton";
 import GridButtonWindow from "./GridButtonWindow";
+import { GridConfigSlider } from "./GridConfigSlider.tsx";
 import { subtractWithSaturation8bit } from "../utils.tsx";
 import { CodeListing } from "./CodeListing.tsx";
 import Grid from "./Grid.tsx";
+
+
 export default function GridPage() {
   const numberOfElements = 20;
 
@@ -58,10 +61,24 @@ export default function GridPage() {
     ));
   }
 
+
   const [cssProps, setCssProps] = useState<CSSProperties>({
     gridAutoFlow: "dense",
+    gridTemplateColumns: "100",
+    gridAutoRows: "100",
   });
 
+  function setElementSizeHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    const newSize: number = Number(e.target.value);
+
+    const newProps: CSSProperties = {};
+    newProps.gridAutoFlow = cssProps.gridAutoFlow;
+    newProps.gridTemplateColumns = newSize;
+    newProps.gridAutoRows = newSize;
+
+    setCssProps(newProps);
+    console.log(cssProps.gridTemplateColumns);
+  }
   const [selectedAspects, setSelectedAspects] = useState([
     { id: 1, aspect: "aspect_1_to_2", selected: true },
     { id: 2, aspect: "aspect_2_to_1", selected: true },
@@ -113,12 +130,18 @@ export default function GridPage() {
                 name={cssProps.gridAutoFlow}
                 handleClick={() => {
                   const newProps: CSSProperties = {};
+                  newProps.gridTemplateColumns = cssProps.gridTemplateColumns;
+                  newProps.gridAutoRows = cssProps.gridAutoRows;
                   newProps.gridAutoFlow =
                     cssProps.gridAutoFlow == "dense" ? "row" : "dense";
                   setCssProps(newProps);
                   console.log(cssProps.gridAutoFlow);
                 }}
               />
+              <GridConfigSlider
+                name="element size"
+                handleOnChange={setElementSizeHandler}
+              ></GridConfigSlider>
             </GridButtonWindow>
           </div>
 
