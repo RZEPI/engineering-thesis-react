@@ -18,6 +18,7 @@ export default function Grid({
           cssProps.gridTemplateColumns?.toString() +
           "px)",
         gridAutoRows: cssProps.gridAutoRows?.toString() + "px",
+        gap: cssProps.gap?.toString() + "px",
       }}
     >
       {children}

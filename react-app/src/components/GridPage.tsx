@@ -8,7 +8,6 @@ import { subtractWithSaturation8bit } from "../utils.tsx";
 import { CodeListing } from "./CodeListing.tsx";
 import Grid from "./Grid.tsx";
 
-
 export default function GridPage() {
   const numberOfElements = 20;
 
@@ -61,23 +60,37 @@ export default function GridPage() {
     ));
   }
 
-
   const [cssProps, setCssProps] = useState<CSSProperties>({
     gridAutoFlow: "dense",
     gridTemplateColumns: "100",
     gridAutoRows: "100",
+    gap: "10",
   });
 
   function setElementSizeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     const newSize: number = Number(e.target.value);
-
     const newProps: CSSProperties = {};
+
     newProps.gridAutoFlow = cssProps.gridAutoFlow;
     newProps.gridTemplateColumns = newSize;
     newProps.gridAutoRows = newSize;
+    newProps.gap = cssProps.gap; // z dodaniem kazdej propertki trzeba bedzie poprawiac każdą funkcje - co jest złe.
 
     setCssProps(newProps);
-    console.log(cssProps.gridTemplateColumns);
+  }
+
+  function setGapSizeHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    const newSize: number = Number(e.target.value);
+    // Pomysl taki, aby kazda propertka miala swoj stan jednak, a obiekt byl obliczany na podstawie propertek, uprosci to zapis
+    // zrobic jakies handlery bedace wrapperami na glowny handler, podajace propertke do wymiany
+
+    const newProps: CSSProperties = {};
+    newProps.gridAutoFlow = cssProps.gridAutoFlow;
+    newProps.gridTemplateColumns = cssProps.gridTemplateColumns;
+    newProps.gridAutoRows = cssProps.gridAutoRows;
+    newProps.gap = newSize;
+
+    setCssProps(newProps);
   }
   const [selectedAspects, setSelectedAspects] = useState([
     { id: 1, aspect: "aspect_1_to_2", selected: true },
@@ -139,8 +152,14 @@ export default function GridPage() {
                 }}
               />
               <GridConfigSlider
-                name="element size"
+                defaultValue={cssProps.gridTemplateColumns?.toString() + ""}
+                name="Element size"
                 handleOnChange={setElementSizeHandler}
+              ></GridConfigSlider>
+              <GridConfigSlider
+                defaultValue={cssProps.gap?.toString() + ""}
+                name="Gap size"
+                handleOnChange={setGapSizeHandler}
               ></GridConfigSlider>
             </GridButtonWindow>
           </div>
