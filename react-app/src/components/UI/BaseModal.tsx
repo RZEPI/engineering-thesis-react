@@ -21,7 +21,7 @@ const BaseModal = forwardRef<DialogHandle, PropsWithChildren<BaseModalProps>>((p
     }
 
   return createPortal(
-    <dialog className={styles.modal} ref={dialog}>
+    <dialog className={styles.modal} ref={dialog} onClose={handleCloseModal}>
       <header className={styles["modal-header"]}>
         <h2></h2>
         <h2>{props.title}</h2>

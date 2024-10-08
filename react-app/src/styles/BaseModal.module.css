@@ -1,6 +1,19 @@
-.modal {
+:root{
     --modal-width: 60vw;
     --modal-height: 40vh;
+}
+@media (max-height: 1000px)
+{
+    :root
+    {
+        --modal-width: 70vw;
+        --modal-height: 70vh;
+    }
+
+}
+
+.modal {
+
     --modal-content-padding: 3em;
     position: fixed;
     top: -30vh;
@@ -43,4 +56,9 @@
 {
     padding: var(--modal-content-padding);
     padding-top: var(--modal-content-padding)/2;
+}
+
+.modal::backdrop
+{
+    background-color: rgba(0, 0, 0, 0.5);
 }
