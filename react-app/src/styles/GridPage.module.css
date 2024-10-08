@@ -43,7 +43,6 @@ body {
   border-radius: 15px;
   max-width: 100%;
   justify-items: stretch;
-  gap: 10px;
 }
 
 .element {

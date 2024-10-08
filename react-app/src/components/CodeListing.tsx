@@ -21,6 +21,8 @@ export function CodeListing({ cssProps }: { cssProps: CSSProperties }) {
         grid-auto-rows : {cssProps.gridAutoRows}{" "}
       </span>
       <br />
+      <span style={{ paddingLeft: "2em" }}> gap : {cssProps.gap} </span>
+      <br />
       &#125;
     </div>
   );
