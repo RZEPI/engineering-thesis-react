@@ -13,7 +13,6 @@
 }
 
 .modal {
-
     --modal-content-padding: 3em;
     position: fixed;
     top: -30vh;

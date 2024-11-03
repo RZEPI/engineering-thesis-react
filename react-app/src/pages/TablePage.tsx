@@ -173,15 +173,15 @@ export default function TablePage() {
     value: number,
     filter: IntFilter,
   ): boolean {
-    if (filter.min !== undefined && filter.min >= value) return false;
-    if (filter.max !== undefined && filter.max <= value) return false;
+    if (filter.min !== undefined && filter.min > value) return false;
+    if (filter.max !== undefined && filter.max < value) return false;
 
     return true;
   }
 
   function checkIfValueInRangeOpen(value: number, filter: IntFilter): boolean {
-    if (filter.min !== undefined && filter.min > value) return false;
-    if (filter.max !== undefined && filter.max < value) return false;
+    if (filter.min !== undefined && filter.min >= value) return false;
+    if (filter.max !== undefined && filter.max <= value) return false;
 
     return true;
   }

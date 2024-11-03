@@ -1,7 +1,6 @@
 import { forwardRef, useState } from "react";
 
 import BaseModal from "../UI/BaseModal";
-import NumericFilterInput from "./NumericFilterInput";
 import StringFilterInput from "./StringFilterInput";
 
 import { DialogHandle } from "../../models/DialogHandle";
@@ -9,6 +8,7 @@ import { TableFilterModalProps } from "../../models/table/TableFilterModalProps"
 import { IntFilter } from "../../models/table/TableFilter";
 
 import styles from "../../styles/table/TableFilterModal.module.css";
+import NumericFilterTab from "./NumericFilterTab";
 
 const TableFilterModal = forwardRef<DialogHandle, TableFilterModalProps>(
   ({ filter, setFilter }, ref) => {
@@ -64,31 +64,12 @@ const TableFilterModal = forwardRef<DialogHandle, TableFilterModalProps>(
       if (activeTab === "id") currFilter = filter.id;
       else currFilter = filter.level;
       filterForm = (
-        <>
-          <li className={styles["header"]}>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} range</li>
-          <NumericFilterInput
-            className="min"
-            value={currFilter.min}
-            handleChange={handleNumericInputChange}
-            key={`min_${activeTab}`}
-          />
-          <NumericFilterInput
-            className="max"
-            value={currFilter.max}
-            handleChange={handleNumericInputChange}
-            key={`max_${activeTab}`}
-          />
-          <li key={`interval_${activeTab}`}>
-            <label htmlFor="open-interval">Open interval</label>
-            <input
-              type="checkbox"
-              className={styles["open-interval"]}
-              id="open-interval"
-              checked={currFilter.isOpen}
-              onChange={handleIsOpenChange}
-            />
-          </li>
-        </>
+        <NumericFilterTab
+          currentFilter={currFilter}
+          activeTab={activeTab}
+          handleIsOpenChange={handleIsOpenChange}
+          handleNumericInputChange={handleNumericInputChange}
+        />
       );
     }
 
@@ -97,7 +78,11 @@ const TableFilterModal = forwardRef<DialogHandle, TableFilterModalProps>(
         <ul className={styles.tabs}>
           {tabs.map((tab) => {
             return (
-              <li key={tab} onClick={() => handleTabClick(tab)} className={tab === activeTab ? styles["active"] : undefined }>
+              <li
+                key={tab}
+                onClick={() => handleTabClick(tab)}
+                className={tab === activeTab ? styles["active"] : undefined}
+              >
                 {tab.toUpperCase()}
               </li>
             );
