@@ -11,56 +11,6 @@ import Grid from "./Grid.tsx";
 export default function GridPage() {
   const numberOfElements = 20;
 
-  function getRandomAspect() {
-    const aspects = selectedAspects.filter((e) => {
-      return e.selected == true;
-    });
-
-    if (aspects.length == 0) {
-      return styles[selectedAspects[0].aspect];
-    }
-    const randomIndex = Math.floor(Math.random() * aspects.length);
-    return styles[aspects[randomIndex].aspect];
-  }
-
-  function getRandomColor() {
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-  }
-
-  function generateElements() {
-    const color: Array<Array<number>> = [];
-
-    for (let i = 0; i < numberOfElements; i++) {
-      color.push(getRandomColor());
-    }
-
-    return Array.from({ length: numberOfElements }).map((_, index) => (
-      <div
-        key={index}
-        className={`${styles["element"]} ${getRandomAspect()}`}
-        style={{
-          backgroundColor: "rgb(" + color[index].join(", ") + ")",
-          borderColor:
-            "rgb(" +
-            subtractWithSaturation8bit(60, color[index][0]).toString() +
-            ", " +
-            subtractWithSaturation8bit(60, color[index][1]).toString() +
-            ", " +
-            subtractWithSaturation8bit(60, color[index][2]).toString() +
-            ")",
-          textAlign: "center",
-          alignContent: "center",
-          fontSize: "2rem",
-          color: "black",
-          overflow: "hidden"
-        }}
-      >
-        <span>{index}</span>
-      </div>
-    ));
-  }
-
   const [cssProps, setCssProps] = useState<CSSProperties>({
     gridAutoFlow: "dense",
     gridTemplateColumns: "100",
@@ -68,31 +18,6 @@ export default function GridPage() {
     gap: "10",
   });
 
-  function setElementSizeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    const newSize: number = Number(e.target.value);
-    const newProps: CSSProperties = {};
-
-    newProps.gridAutoFlow = cssProps.gridAutoFlow;
-    newProps.gridTemplateColumns = newSize;
-    newProps.gridAutoRows = newSize;
-    newProps.gap = cssProps.gap; // z dodaniem kazdej propertki trzeba bedzie poprawiac każdą funkcje - co jest złe.
-
-    setCssProps(newProps);
-  }
-
-  function setGapSizeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    const newSize: number = Number(e.target.value);
-    // Pomysl taki, aby kazda propertka miala swoj stan jednak, a obiekt byl obliczany na podstawie propertek, uprosci to zapis
-    // zrobic jakies handlery bedace wrapperami na glowny handler, podajace propertke do wymiany
-
-    const newProps: CSSProperties = {};
-    newProps.gridAutoFlow = cssProps.gridAutoFlow;
-    newProps.gridTemplateColumns = cssProps.gridTemplateColumns;
-    newProps.gridAutoRows = cssProps.gridAutoRows;
-    newProps.gap = newSize;
-
-    setCssProps(newProps);
-  }
   const [selectedAspects, setSelectedAspects] = useState([
     { id: 1, aspect: "aspect_1_to_2", selected: true },
     { id: 2, aspect: "aspect_2_to_1", selected: true },
@@ -101,9 +26,95 @@ export default function GridPage() {
     { id: 5, aspect: "aspect_1_to_3", selected: true },
   ]);
 
-  const [elements, setElements] = useState(generateElements);
+  const [elements, setElements] = useState(getGeneratedElements);
 
-  function selectAspectID(id: number) {
+  const aspectButtons = selectedAspects.map((el, index) => {
+    return (
+      <GridConfigButton
+        key={index}
+        name={el.aspect}
+        handleClick={() => {
+          checkAspect(el.id);
+        }}
+        style={el.selected ? {} : { textDecoration: "line-through" }}
+      />
+    );
+  });
+
+  function getRandomAspect() {
+    const filteredAspects = selectedAspects.filter((e) => {
+      return e.selected == true;
+    });
+
+    if (filteredAspects.length == 0) {
+      return styles[selectedAspects[0].aspect];
+    }
+
+    const randomIndex = Math.floor(Math.random() * filteredAspects.length);
+    return styles[filteredAspects[randomIndex].aspect];
+  }
+
+  function getRandomColor() {
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+  }
+
+  function getGeneratedElements() {
+    const colors: Array<Array<number>> = [];
+
+    for (let i = 0; i < numberOfElements; i++) {
+      colors.push(getRandomColor());
+    }
+
+    return Array.from({ length: numberOfElements }).map((_, index) => (
+      <div
+        key={index}
+        className={`${styles["element"]} ${getRandomAspect()}`}
+        style={{
+          backgroundColor: "rgb(" + colors[index].join(", ") + ")",
+          borderColor:
+            "rgb(" +
+            subtractWithSaturation8bit(60, colors[index][0]).toString() +
+            ", " +
+            subtractWithSaturation8bit(60, colors[index][1]).toString() +
+            ", " +
+            subtractWithSaturation8bit(60, colors[index][2]).toString() +
+            ")",
+          textAlign: "center",
+          alignContent: "center",
+          fontSize: "2rem",
+          color: "black",
+          overflow: "hidden",
+        }}
+      >
+        <span>{index}</span>
+      </div>
+    ));
+  }
+
+  function setGridCss(newProps: CSSProperties) {
+    const finalProps: CSSProperties = {
+      ...cssProps,
+      ...newProps,
+    };
+
+    setCssProps(finalProps);
+  }
+
+  function setGapSizeHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    setGridCss({
+      gap: e.target.value,
+    });
+  }
+
+  function setElementSizeHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    setGridCss({
+      gridTemplateColumns: e.target.value,
+      gridAutoRows: e.target.value,
+    });
+  }
+
+  function checkAspect(id: number) {
     const newAspects = [...selectedAspects];
     newAspects.forEach((element) => {
       if (element.id == id) {
@@ -113,19 +124,6 @@ export default function GridPage() {
 
     setSelectedAspects(newAspects);
   }
-
-  const aspectButtons = selectedAspects.map((el, index) => {
-    return (
-      <GridConfigButton
-        key={index}
-        name={el.aspect}
-        handleClick={() => {
-          selectAspectID(el.id);
-        }}
-        style={el.selected ? {} : { textDecoration: "line-through" }}
-      />
-    );
-  });
 
   return (
     <div className={styles["page-wrapper"]}>
@@ -137,7 +135,7 @@ export default function GridPage() {
               <GridConfigButton
                 name="Generate"
                 handleClick={() => {
-                  setElements(generateElements);
+                  setElements(getGeneratedElements);
                 }}
               />
               <GridConfigButton
