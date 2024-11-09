@@ -53,6 +53,7 @@ export default function GridPage() {
           alignContent: "center",
           fontSize: "2rem",
           color: "black",
+          overflow: "hidden"
         }}
       >
         <span>{index}</span>
