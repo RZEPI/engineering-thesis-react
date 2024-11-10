@@ -61,7 +61,6 @@ export default function GridPage() {
 
   function getGeneratedElements() {
     const colors: Array<Array<number>> = [];
-
     for (let i = 0; i < numberOfElements; i++) {
       colors.push(getRandomColor());
     }
@@ -142,11 +141,9 @@ export default function GridPage() {
                 name={cssProps.gridAutoFlow}
                 handleClick={() => {
                   const newProps: CSSProperties = {};
-                  newProps.gridTemplateColumns = cssProps.gridTemplateColumns;
-                  newProps.gridAutoRows = cssProps.gridAutoRows;
                   newProps.gridAutoFlow =
                     cssProps.gridAutoFlow == "dense" ? "row" : "dense";
-                  setCssProps(newProps);
+                  setGridCss(newProps);
                 }}
               />
               <GridConfigSlider
