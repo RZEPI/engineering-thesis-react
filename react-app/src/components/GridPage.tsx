@@ -147,16 +147,15 @@ export default function GridPage() {
                   newProps.gridAutoFlow =
                     cssProps.gridAutoFlow == "dense" ? "row" : "dense";
                   setCssProps(newProps);
-                  console.log(cssProps.gridAutoFlow);
                 }}
               />
               <GridConfigSlider
-                defaultValue={cssProps.gridTemplateColumns?.toString() + ""}
+                defaultValue={cssProps.gridTemplateColumns?.valueOf()}
                 name="Element size"
                 handleOnChange={setElementSizeHandler}
               ></GridConfigSlider>
               <GridConfigSlider
-                defaultValue={cssProps.gap?.toString() + ""}
+                defaultValue={cssProps.gap?.valueOf()}
                 name="Gap size"
                 handleOnChange={setGapSizeHandler}
               ></GridConfigSlider>

@@ -5,7 +5,7 @@ export function GridConfigSlider({
 }: {
   name: string;
   handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  defaultValue: string;
+  defaultValue: number | string | undefined;
 }) {
   return (
     <>
