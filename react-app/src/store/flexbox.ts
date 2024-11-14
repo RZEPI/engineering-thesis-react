@@ -7,7 +7,7 @@ import { FlexboxElement } from "../models/flexbox-generator/FlexboxElement";
 import { RootState } from ".";
 import { drawColor } from "../util/util.ts";
 
-interface FlexboxState {
+export interface FlexboxState {
   wrapping: boolean;
   direction: boolean;
   justifyContent: ContentOptions;
@@ -37,29 +37,29 @@ const flexSlice = createSlice({
   name: "flexbox",
   initialState,
   reducers: {
-    toggleWrapping(state) {
+    toggleWrapping(state: FlexboxState) {
       state.wrapping = !state.wrapping;
     },
-    toggleDirection(state) {
+    toggleDirection(state: FlexboxState) {
       state.direction = !state.direction;
     },
-    setAlignItems(state, action: PayloadAction<AlignItemsOptions>) {
+    setAlignItems(state: FlexboxState, action: PayloadAction<AlignItemsOptions>) {
       state.alignItems = action.payload;
     },
-    setJustifyContent(state, action: PayloadAction<ContentOptions>) {
+    setJustifyContent(state: FlexboxState, action: PayloadAction<ContentOptions>) {
       state.justifyContent = action.payload;
     },
-    setAlignContent(state, action: PayloadAction<ContentOptions>) {
+    setAlignContent(state: FlexboxState, action: PayloadAction<ContentOptions>) {
       state.alignContent = action.payload;
     },
-    addElement(state) {
+    addElement(state : FlexboxState) {
       const content = state.content;
       let lastElementId = 0;
       if (content.length !== 0) lastElementId = content[content.length - 1].id;
 
       state.content.push({ id: lastElementId + 1, color: drawColor() });
     },
-    removeElement(state, action: PayloadAction<number>) {
+    removeElement(state: FlexboxState, action: PayloadAction<number>) {
       const content = state.content;
       state.content = content.filter(
         (element) => element.id !== action.payload,
