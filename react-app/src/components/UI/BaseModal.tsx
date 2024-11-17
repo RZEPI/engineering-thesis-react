@@ -13,6 +13,9 @@ const BaseModal = forwardRef<DialogHandle, PropsWithChildren<BaseModalProps>>((p
             open(){
                 dialog.current!.showModal();
             },
+            close(){
+              dialog.current!.close();
+            }
         }
     });
 

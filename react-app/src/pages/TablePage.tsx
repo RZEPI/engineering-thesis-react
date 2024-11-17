@@ -12,8 +12,7 @@ import {
   StringFilter,
 } from "../models/table/TableFilter";
 
-import { numberTable } from "../static/RandomDataTables";
-import { namesTable } from "../static/RandomDataTables";
+import { numberTable,namesTable, makeDefaultFilter, tableFields } from "../static/RandomDataTables";
 import styles from "../styles/table/TablePage.module.css";
 import { ActionFunctions } from "../models/table/TableActionsProps";
 
@@ -21,36 +20,13 @@ let key: number = 0;
 
 export default function TablePage() {
   const [tableContent, setContent] = useState<TableRowData[]>([]);
-  const [tableFilter, setFilter] = useState<TableFilter>({
-    id: {
-      min: undefined,
-      max: undefined,
-      isOpen: false,
-    },
-    name: namesTable.map((name) => {
-      return { value: name, isChecked: true };
-    }),
-    level: {
-      min: undefined,
-      max: undefined,
-      isOpen: false,
-    },
-  });
+  const [tableFilter, setFilter] = useState<TableFilter>({...makeDefaultFilter()});
 
   const ref = useRef<DialogHandle>(null);
 
   function openFilterModal() {
     ref.current?.open();
   }
-
-  const tableDummyRow: TableRowData = {
-    id: 0,
-    name: "Name",
-    level: 0,
-  };
-  const tableFields = Object.keys(tableDummyRow).map((key) =>
-    key.toUpperCase(),
-  );
 
   function generateArray() {
     const generatedArray: TableRowData[] = [];
