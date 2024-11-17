@@ -15,17 +15,20 @@ export const namesTable: string[] = [
   "Ola",
   "Ala",
   "Łukasz",
-  "Paweł"
+  "Paweł",
 ];
 
-export function makeDefaultFilter():TableFilter {
-  const nameFilters: StringFilter[] =  namesTable.map((name) => ({ value: name, isChecked: true }));
+export function makeDefaultFilter(): TableFilter {
+  const nameFilters: StringFilter[] = namesTable.map((name) => ({
+    value: name,
+    isChecked: true,
+  }));
   return {
     id: { min: undefined, max: undefined, isOpen: false },
     name: nameFilters,
     level: { min: undefined, max: undefined, isOpen: false },
   };
-};
+}
 
 const tableDummyRow: TableRowData = {
   id: 0,

@@ -1,4 +1,4 @@
 export type DialogHandle = {
-    open: () => void;
-    close: () => void;
-}
+  open: () => void;
+  close: () => void;
+};

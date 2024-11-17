@@ -1,13 +1,13 @@
 .v-btn-cont {
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-  }
-  .v-btn-cont button {
-    font-size: 1.2em;
-    margin-top: 1em;
-    padding: 0.25em;
-    border: 2px solid grey;
-    background-color: white;
-    border-radius: 10px;
-  }
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+.v-btn-cont button {
+  font-size: 1.2em;
+  margin-top: 1em;
+  padding: 0.25em;
+  border: 2px solid grey;
+  background-color: white;
+  border-radius: 10px;
+}

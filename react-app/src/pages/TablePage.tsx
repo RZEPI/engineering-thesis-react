@@ -12,7 +12,12 @@ import {
   StringFilter,
 } from "../models/table/TableFilter";
 
-import { numberTable,namesTable, makeDefaultFilter, tableFields } from "../static/RandomDataTables";
+import {
+  numberTable,
+  namesTable,
+  makeDefaultFilter,
+  tableFields,
+} from "../static/RandomDataTables";
 import styles from "../styles/table/TablePage.module.css";
 import { ActionFunctions } from "../models/table/TableActionsProps";
 
@@ -20,7 +25,9 @@ let key: number = 0;
 
 export default function TablePage() {
   const [tableContent, setContent] = useState<TableRowData[]>([]);
-  const [tableFilter, setFilter] = useState<TableFilter>({...makeDefaultFilter()});
+  const [tableFilter, setFilter] = useState<TableFilter>({
+    ...makeDefaultFilter(),
+  });
 
   const ref = useRef<DialogHandle>(null);
 

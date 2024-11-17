@@ -7,38 +7,35 @@ const RECORDS_TO_DELETE: number = 3_000;
 const NTH_TO_DELETE: number = 2;
 const NTH_TO_UPDATE: number = 2;
 
-
 export default function TableActions({
   tableContent,
   actionFunctions,
 }: TableActionsProps) {
-
-
-  function handleAddRecordsClick(){
+  function handleAddRecordsClick() {
     actionFunctions.addNRecords(RECORDS_TO_CREATE);
   }
 
-  function handleDeleteRecordsClick(){
+  function handleDeleteRecordsClick() {
     actionFunctions.deleteNRecords(RECORDS_TO_DELETE);
   }
 
-  function handleDeleteEveryNthRecordClick(){
+  function handleDeleteEveryNthRecordClick() {
     actionFunctions.deleteEveryNthRecord(NTH_TO_DELETE);
   }
 
-  function handleUpdateNthRowClick(){
+  function handleUpdateNthRowClick() {
     actionFunctions.updateNthRow(NTH_TO_UPDATE);
   }
 
-  function handleReplaceAllRowsClick(){
+  function handleReplaceAllRowsClick() {
     actionFunctions.replaceAllRows();
   }
 
-  function handleSwapRowsClick(){
+  function handleSwapRowsClick() {
     actionFunctions.swapRows();
   }
 
-  function handleClearRowsClick(){
+  function handleClearRowsClick() {
     actionFunctions.clearRows();
   }
 
@@ -46,15 +43,11 @@ export default function TableActions({
 
   return (
     <div className={styles["v-btn-cont"]}>
-      <button onClick={handleAddRecordsClick}>
-        Add {RECORDS_TO_CREATE}
-      </button>
+      <button onClick={handleAddRecordsClick}>Add {RECORDS_TO_CREATE}</button>
       <button onClick={handleDeleteRecordsClick}>
         Delete {RECORDS_TO_DELETE}
       </button>
-      <button
-        onClick={handleDeleteEveryNthRecordClick}
-      >
+      <button onClick={handleDeleteEveryNthRecordClick}>
         Delete {NTH_TO_DELETE}th
       </button>
       <button onClick={handleUpdateNthRowClick}>
