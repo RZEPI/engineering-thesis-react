@@ -46,7 +46,7 @@ const TableFilterModal = forwardRef<DialogHandle, TableFilterModalProps>(
 
     function handleNumericInputChange(e: React.ChangeEvent<HTMLInputElement>) {
       const value = parseInt(e.target.value);
-      if (e.target.className === "min")
+      if (e.target.id === "min")
         setFilter((prevFilter) => ({
           ...prevFilter,
           [activeTab]: { ...currentFilter, min: value },
