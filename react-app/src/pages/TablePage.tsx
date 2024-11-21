@@ -21,6 +21,7 @@ import {
 import styles from "../styles/table/TablePage.module.css";
 import { ActionFunctions } from "../models/table/TableActionsProps";
 
+
 let key: number = 0;
 
 export default function TablePage() {
