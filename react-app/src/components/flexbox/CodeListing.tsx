@@ -1,12 +1,13 @@
-import { flexboxStyles } from "../../store/flexbox";
-import { useAppSelector } from "../../store/hooks";
+import { flexboxStyles, FlexboxContext } from "../../store/flexboxContext";
 
 import styles from "../../styles/flexbox/CodeListing.module.css";
 
 import clipboardSign from "../../assets/clipboard-outline-svgrepo-com.svg";
+import { useContext } from "react";
 
 export default function CodeListing() {
-  const flexClasses = useAppSelector(flexboxStyles);
+  const { state: flexboxState } = useContext(FlexboxContext);
+  const flexClasses = flexboxStyles(flexboxState);
 
   const parsedEntries: { propertyKey: string; propertyValue: string }[] = [];
 

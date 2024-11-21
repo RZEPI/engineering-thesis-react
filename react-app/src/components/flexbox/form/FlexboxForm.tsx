@@ -1,18 +1,17 @@
+import { useContext } from "react";
+
 import SelectInput from "./SelectInput";
 import ToggleInput from "./ToggleInput";
-
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { flexboxActions, flexboxWrapping } from "../../../store/flexbox";
+import { FlexboxContext } from "../../../store/flexboxContext";
 
 import { ContentOptions } from "../../../models/flexbox-generator/ContentOptions.ts";
 import { AlignItemsOptions } from "../../../models/flexbox-generator/AlignItemsOptions";
-import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 
 import styles from "../../../styles/flexbox/FlexboxForm.module.css";
 
 export default function FlexboxForm() {
-  const dispatch = useAppDispatch();
-  const wrapping = useAppSelector(flexboxWrapping);
+  const context = useContext(FlexboxContext);
+  const {wrapping} = context.state;
 
   const contentOptionsList = Object.values(ContentOptions).filter((value) =>
     isNaN(Number(value)),
@@ -22,29 +21,29 @@ export default function FlexboxForm() {
   );
 
   function handleToggleDirection() {
-    dispatch(flexboxActions.toggleDirection());
+    context.toggleDirection();
   }
 
   function handleToggleWrapping() {
-    dispatch(flexboxActions.toggleWrapping());
+    context.toggleWrapping();
   }
 
   function handleSelection<T>(
     chosenOption: string,
-    action: ActionCreatorWithPayload<T>,
+    action: (option: T) => void,
     optionList: T[],
   ) {
     const parsedOption = optionList.find(
       (optionItem) => optionItem === chosenOption,
       optionList[0],
-    );
-    dispatch(action(parsedOption!));
+    )!;
+    action(parsedOption);
   }
 
   function handleJustifyContentChange(chosenOption: string) {
     handleSelection<ContentOptions>(
       chosenOption,
-      flexboxActions.setJustifyContent,
+      context.setJustifyContent,
       contentOptionsList,
     );
   }
@@ -52,7 +51,7 @@ export default function FlexboxForm() {
   function handleAlignItemsChange(chosenOption: string) {
     handleSelection<AlignItemsOptions>(
       chosenOption,
-      flexboxActions.setAlignItems,
+      context.setAlignItems,
       alignItemsOptionsList,
     );
   }
@@ -60,13 +59,13 @@ export default function FlexboxForm() {
   function handleAlignContentChange(chosenOption: string) {
     handleSelection<ContentOptions>(
       chosenOption,
-      flexboxActions.setAlignContent,
+      context.setAlignContent,
       contentOptionsList,
     );
   }
 
   function addContainer() {
-    dispatch(flexboxActions.addElement());
+    context.addElement();
   }
 
   return (
