@@ -1,29 +1,61 @@
-import { useEffect, useState } from "react";
-import { numberTable } from "../static/RandomDataTables";
-import { namesTable } from "../static/RandomDataTables";
-import TableRow from "../components/TableRow";
-import styles from "../styles/TablePage.module.css";
-import { TableRowData } from "../models/PerfTestArrayRow";
+import { useRef, useState, useEffect } from "react";
 
-const RECORDS_TO_CREATE: number = 30_000;
-const RECORDS_TO_DELETE: number = 3_000;
-const NTH_TO_DELETE: number = 2;
-const NTH_TO_UPDATE: number = 2;
+import TableActions from "../components/table/TableActions";
+import TableContent from "../components/table/TableContent";
+import TableFilterModal from "../components/table/TableFilterModal";
+
+import { TableRowData } from "../models/table/TableRowData";
+import { DialogHandle } from "../models/DialogHandle";
+import {
+  TableFilter,
+  IntFilter,
+  StringFilter,
+} from "../models/table/TableFilter";
+
+import {
+  numberTable,
+  namesTable,
+  makeDefaultFilter,
+  tableFields,
+} from "../static/RandomDataTables";
+import styles from "../styles/table/TablePage.module.css";
+import { ActionFunctions } from "../models/table/TableActionsProps";
+
 
 let key: number = 0;
 
 export default function TablePage() {
   const [tableContent, setContent] = useState<TableRowData[]>([]);
+  const [tableFilter, setFilter] = useState<TableFilter>({
+    ...makeDefaultFilter(),
+  });
 
-  const rowCount: number = tableContent.length;
+  const ref = useRef<DialogHandle>(null);
 
-  const tableList = tableContent.map((tuple) => (
-    <TableRow
-      className={styles["table-row"]}
-      t={tuple}
-      key={tuple.id}
-    ></TableRow>
-  ));
+  function openFilterModal() {
+    ref.current?.open();
+  }
+
+  function generateArray() {
+    const generatedArray: TableRowData[] = [];
+
+    for (let i = 0; i < 5; i++) {
+      const nameIndex: number = Math.floor(Math.random() * namesTable.length);
+      const levelIndex: number = Math.floor(Math.random() * numberTable.length);
+
+      generatedArray.unshift({
+        id: key++,
+        name: namesTable[nameIndex],
+        level: numberTable[levelIndex],
+      });
+    }
+
+    setContent(generatedArray);
+  }
+
+  useEffect(() => {
+    generateArray();
+  }, []);
 
   function addNRecords(n: number) {
     let nameIndex: number;
@@ -111,64 +143,81 @@ export default function TablePage() {
     setContent(tmpArray);
   }
 
-  function generateArray() {
-    const generatedArray: TableRowData[] = [];
+  const actionFunctions: ActionFunctions = {
+    addNRecords,
+    deleteNRecords,
+    deleteEveryNthRecord,
+    updateNthRow,
+    replaceAllRows,
+    swapRows,
+    clearRows,
+  };
 
-    for (let i = 0; i < 5; i++) {
-      const nameIndex: number = Math.floor(Math.random() * namesTable.length);
-      const levelIndex: number = Math.floor(Math.random() * numberTable.length);
+  function checkIfValueInRangeClosed(
+    value: number,
+    filter: IntFilter,
+  ): boolean {
+    if (filter.min !== undefined && filter.min > value) return false;
+    if (filter.max !== undefined && filter.max < value) return false;
 
-      generatedArray.unshift({
-        id: key++,
-        name: namesTable[nameIndex],
-        level: numberTable[levelIndex],
-      });
-    }
-
-    setContent(generatedArray);
+    return true;
   }
 
-  useEffect(() => {
-    generateArray();
-  }, []);
+  function checkIfValueInRangeOpen(value: number, filter: IntFilter): boolean {
+    if (filter.min !== undefined && filter.min >= value) return false;
+    if (filter.max !== undefined && filter.max <= value) return false;
+
+    return true;
+  }
+
+  function checkIfValueIsInFilterRange(
+    value: number,
+    filter: IntFilter,
+  ): boolean {
+    if (filter.isOpen) {
+      return checkIfValueInRangeOpen(value, filter);
+    } else {
+      return checkIfValueInRangeClosed(value, filter);
+    }
+  }
+
+  function checkIfNameIsInFilter(
+    givenName: string,
+    filter: StringFilter[],
+  ): boolean {
+    return (
+      filter.find((name) => name.value === givenName && name.isChecked) !==
+      undefined
+    );
+  }
+
+  const filteredTableContent = tableContent.filter((row) => {
+    if (!checkIfValueIsInFilterRange(row.id, tableFilter.id)) return false;
+
+    if (!checkIfValueIsInFilterRange(row.level, tableFilter.level))
+      return false;
+
+    if (!checkIfNameIsInFilter(row.name, tableFilter.name)) return false;
+
+    return true;
+  });
 
   return (
-    <div className={styles["page-wrapper"]}>
-      <div className={styles["page-content"]}>
-        <div className={styles["v-btn-cont"]}>
-          <button onClick={() => addNRecords(RECORDS_TO_CREATE)}>
-            Add {RECORDS_TO_CREATE}
-          </button>
-          <button onClick={() => deleteNRecords(RECORDS_TO_DELETE)}>
-            Delete {RECORDS_TO_DELETE}
-          </button>
-          <button
-            onClick={() => {
-              deleteEveryNthRecord(NTH_TO_DELETE);
-            }}
-          >
-            Delete {NTH_TO_DELETE}th
-          </button>
-          <button onClick={() => updateNthRow(NTH_TO_UPDATE)}>
-            Update {NTH_TO_UPDATE}th
-          </button>
-          <button onClick={replaceAllRows}>Replace all</button>
-          <button onClick={swapRows}>Swap</button>
-          <button onClick={clearRows}>Clear all</button>
-          <span>rows: {rowCount}</span>
-        </div>
-
-        <div className={styles["table-container"]}>
-          <div className={styles["table"]}>
-            <div className={styles["table-header"]}>
-              <div>Id</div>
-              <div>Name</div>
-              <div>Level</div>
-            </div>
-            {tableList}
-          </div>
+    <>
+      <TableFilterModal ref={ref} filter={tableFilter} setFilter={setFilter} />
+      <div className={styles["page-wrapper"]}>
+        <div className={styles["page-content"]}>
+          <TableActions
+            tableContent={filteredTableContent}
+            actionFunctions={actionFunctions}
+          />
+          <TableContent
+            tableContent={filteredTableContent}
+            tableFields={tableFields}
+            openFilterDialog={openFilterModal}
+          />
         </div>
       </div>
-    </div>
+    </>
   );
 }

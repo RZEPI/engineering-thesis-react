@@ -1,0 +1,19 @@
+.numeric-input {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.numeric-input input {
+  width: 60%;
+  font-size: 1.5em;
+  padding: 0.3em;
+  border-radius: 0.4em;
+}
+.numeric-input .error {
+  grid-column: 1 / span 2;
+  text-align: center;
+  color: red;
+  font-size: 1.2em;
+}
+.numeric-input .error-input {
+  border: 3px solid red;
+}
