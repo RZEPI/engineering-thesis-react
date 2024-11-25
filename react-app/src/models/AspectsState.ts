@@ -1,5 +1,6 @@
 export type AspectStates = Array<{
   id: number;
-  aspect: string;
+  aspectClass: string;
+  aspectText: string;
   selected: boolean;
 }>;

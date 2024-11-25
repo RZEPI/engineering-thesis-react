@@ -20,11 +20,11 @@ export default function GridPage() {
   });
 
   const [selectedAspects, setSelectedAspects] = useState<AspectStates>([
-    { id: 1, aspect: "aspect_1_to_2", selected: true },
-    { id: 2, aspect: "aspect_2_to_1", selected: true },
-    { id: 3, aspect: "aspect_1_to_1", selected: true },
-    { id: 4, aspect: "aspect_3_to_1", selected: true },
-    { id: 5, aspect: "aspect_1_to_3", selected: true },
+    { id: 1, aspectClass: "aspect_1_to_2", aspectText: "1 to 2", selected: true },
+    { id: 2, aspectClass: "aspect_2_to_1", aspectText: "2 to 1", selected: true },
+    { id: 3, aspectClass: "aspect_1_to_1", aspectText: "1 to 1", selected: true },
+    { id: 4, aspectClass: "aspect_3_to_1", aspectText: "3 to 1", selected: true },
+    { id: 5, aspectClass: "aspect_1_to_3", aspectText: "1 to 3", selected: true },
   ]);
 
   const [elements, setElements] = useState(getGeneratedElements);
@@ -33,7 +33,7 @@ export default function GridPage() {
     return (
       <GridConfigButton
         key={index}
-        name={el.aspect}
+        name={el.aspectText}
         handleClick={() => {
           checkAspect(el.id);
         }}
@@ -48,11 +48,11 @@ export default function GridPage() {
     });
 
     if (filteredAspects.length == 0) {
-      return styles[selectedAspects[0].aspect];
+      return styles[selectedAspects[0].aspectClass];
     }
 
     const randomIndex = Math.floor(Math.random() * filteredAspects.length);
-    return styles[filteredAspects[randomIndex].aspect];
+    return styles[filteredAspects[randomIndex].aspectClass];
   }
 
   function getRandomColor() {
