@@ -7,6 +7,7 @@ import { GridConfigSlider } from "./GridConfigSlider.tsx";
 import { subtractWithSaturation8bit } from "../utils.tsx";
 import { CodeListing } from "./CodeListing.tsx";
 import Grid from "./Grid.tsx";
+import { AspectStates } from "../models/AspectsState.ts";
 
 export default function GridPage() {
   const numberOfElements = 20;
@@ -18,7 +19,7 @@ export default function GridPage() {
     gap: "10",
   });
 
-  const [selectedAspects, setSelectedAspects] = useState([
+  const [selectedAspects, setSelectedAspects] = useState<AspectStates>([
     { id: 1, aspect: "aspect_1_to_2", selected: true },
     { id: 2, aspect: "aspect_2_to_1", selected: true },
     { id: 3, aspect: "aspect_1_to_1", selected: true },
@@ -162,7 +163,7 @@ export default function GridPage() {
           <div className={styles["code-listing-wrapper"]}>
             <CodeListing cssProps={cssProps} />
           </div>
-          <Grid cssProps={cssProps}>{elements}</Grid>
+          <Grid css={cssProps}>{elements}</Grid>
         </div>
       </div>
     </div>

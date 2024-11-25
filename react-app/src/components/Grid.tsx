@@ -1,24 +1,16 @@
-import { CSSProperties, ReactNode } from "react";
 import styles from "../styles/GridPage.module.css";
+import { GridProps } from "../models/GridProps";
 
-export default function Grid({
-  cssProps,
-  children,
-}: {
-  cssProps: CSSProperties;
-  children: ReactNode;
-}) {
+export default function Grid({ css, children }: GridProps) {
   return (
     <div
       className={styles["grid-main"]}
       style={{
-        gridAutoFlow: cssProps.gridAutoFlow?.toString(),
+        gridAutoFlow: css.gridAutoFlow?.toString(),
         gridTemplateColumns:
-          "repeat(auto-fill," +
-          cssProps.gridTemplateColumns?.toString() +
-          "px)",
-        gridAutoRows: cssProps.gridAutoRows?.toString() + "px",
-        gap: cssProps.gap?.toString() + "px",
+          "repeat(auto-fill," + css.gridTemplateColumns?.toString() + "px)",
+        gridAutoRows: css.gridAutoRows?.toString() + "px",
+        gap: css.gap?.toString() + "px",
       }}
     >
       {children}
