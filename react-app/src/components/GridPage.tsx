@@ -4,11 +4,11 @@ import { colors } from "../static/GridElements";
 import GridConfigButton from "./UI/GridButton";
 import GridButtonWindow from "./GridButtonWindow";
 import { GridConfigSlider } from "./GridConfigSlider.tsx";
-import { subtractWithSaturation8bit } from "../utils.tsx";
 import { CodeListing } from "./CodeListing.tsx";
 import Grid from "./Grid.tsx";
 import { AspectStates } from "../models/AspectsState.ts";
 import GridElement from "./UI/GridElement.tsx";
+import { GridElementModel } from "../models/GridElementModel.ts";
 
 export default function GridPage() {
   const numberOfElements = 20;
@@ -53,7 +53,15 @@ export default function GridPage() {
     },
   ]);
 
-  const [elements, setElements] = useState(getGeneratedElements);
+  const [elements, setElements] = useState(generateElements);
+
+  const renderedElements = elements.map((el, index) => (
+    <GridElement
+      aspect={el.aspectClass}
+      color={el.color}
+      index={index}
+    ></GridElement>
+  ));
 
   const aspectButtons = selectedAspects.map((el, index) => {
     return (
@@ -86,19 +94,17 @@ export default function GridPage() {
     return colors[randomIndex];
   }
 
-  function getGeneratedElements() {
-    const colors: Array<Array<number>> = [];
+  function generateElements() {
+    const elements: Array<GridElementModel> = [];
+
     for (let i = 0; i < numberOfElements; i++) {
-      colors.push(getRandomColor());
+      elements.push({
+        color: getRandomColor(),
+        aspectClass: getRandomAspect(),
+      });
     }
 
-    return Array.from({ length: numberOfElements }).map((_, index) => (
-      <GridElement
-        aspect={getRandomAspect()}
-        color={colors[index]}
-        index={index}
-      ></GridElement>
-    ));
+    return [...elements];
   }
 
   function setGridCss(newProps: CSSProperties) {
@@ -144,7 +150,7 @@ export default function GridPage() {
               <GridConfigButton
                 name="Generate"
                 handleClick={() => {
-                  setElements(getGeneratedElements);
+                  setElements(generateElements);
                 }}
               />
               <GridConfigButton
@@ -172,7 +178,7 @@ export default function GridPage() {
           <div className={styles["code-listing-wrapper"]}>
             <CodeListing cssProps={cssProps} />
           </div>
-          <Grid css={cssProps}>{elements}</Grid>
+          <Grid css={cssProps}>{renderedElements}</Grid>
         </div>
       </div>
     </div>
