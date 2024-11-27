@@ -29,6 +29,7 @@ export default function GridPage() {
 
   const renderedElements = elements.map((el, index) => (
     <GridElement
+      key={index}
       aspect={el.aspectClass}
       color={el.color}
       index={index}
