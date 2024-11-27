@@ -1,5 +1,5 @@
 import styles from "../styles/TablePage.module.css";
-import { TableRowData } from "../models/PerfTestArrayRow.ts";
+import { TableRowData } from "../models/table/TableRowData.ts";
 import { useState } from "react";
 
 export default function TableRow({

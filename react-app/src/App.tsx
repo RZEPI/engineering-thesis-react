@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import FlexboxPage from "./pages/FlexboxPage";
 import TablePage from "./pages/TablePage";
+import AnimationPage from "./pages/AnimationPage";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "/flexbox", element: <FlexboxPage /> },
-      { path: "/table", element: <TablePage /> }
+      { path: "/table", element: <TablePage /> },
+      { path: "/animation", element: <AnimationPage /> },
     ],
     errorElement: <ErrorPage />,
   },
