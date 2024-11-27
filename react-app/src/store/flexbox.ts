@@ -15,13 +15,13 @@ export interface FlexboxState {
   alignContent: ContentOptions;
   content: FlexboxElement[];
 }
-const INIT_AMONT_OF_ELEMENTS = 5000
+const INIT_AMONT_OF_ELEMENTS = 5000;
 
 const defaultContent: FlexboxElement[] = [];
 
-for( let i = 1; i <= INIT_AMONT_OF_ELEMENTS; i++ ){
+for (let i = 1; i <= INIT_AMONT_OF_ELEMENTS; i++) {
   const color = drawColor();
-  defaultContent.push({id: i, color: color});
+  defaultContent.push({ id: i, color: color });
 }
 
 const initialState: FlexboxState = {
@@ -43,16 +43,25 @@ const flexSlice = createSlice({
     toggleDirection(state: FlexboxState) {
       state.direction = !state.direction;
     },
-    setAlignItems(state: FlexboxState, action: PayloadAction<AlignItemsOptions>) {
+    setAlignItems(
+      state: FlexboxState,
+      action: PayloadAction<AlignItemsOptions>,
+    ) {
       state.alignItems = action.payload;
     },
-    setJustifyContent(state: FlexboxState, action: PayloadAction<ContentOptions>) {
+    setJustifyContent(
+      state: FlexboxState,
+      action: PayloadAction<ContentOptions>,
+    ) {
       state.justifyContent = action.payload;
     },
-    setAlignContent(state: FlexboxState, action: PayloadAction<ContentOptions>) {
+    setAlignContent(
+      state: FlexboxState,
+      action: PayloadAction<ContentOptions>,
+    ) {
       state.alignContent = action.payload;
     },
-    addElement(state : FlexboxState) {
+    addElement(state: FlexboxState) {
       const content = state.content;
       let lastElementId = 0;
       if (content.length !== 0) lastElementId = content[content.length - 1].id;
