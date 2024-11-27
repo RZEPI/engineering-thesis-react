@@ -43,6 +43,9 @@ export default function Sidebar() {
           >
             <motion.ul
               className={styles["link-container"]}
+              transition={{
+                duration: 0.1,
+              }}
               exit={{ opacity: 0 }}
             >
               {sites.map((site) => {

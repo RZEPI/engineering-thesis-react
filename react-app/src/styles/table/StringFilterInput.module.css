@@ -1,0 +1,8 @@
+.string-input {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+}
+.string-input input {
+  margin: auto;
+}

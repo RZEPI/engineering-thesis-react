@@ -1,0 +1,81 @@
+.tabs {
+  display: flex;
+  list-style-type: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.tabs li {
+  height: 1em;
+  width: 3em;
+  text-align: center;
+  margin-right: 0.9em;
+  cursor: pointer;
+  padding: 0.5em 1em;
+  background-color: var(--main-color);
+  filter: brightness(0.9);
+  border-radius: 0.6em 0.6em 0 0;
+}
+
+.tabs li.active {
+  filter: brightness(1);
+}
+
+.filter-choice {
+  width: calc(var(--modal-width)- 2 * var(--modal-content-padding));
+  height: calc(
+    var(--modal-height) * (7 / 9) - 2 * var(--modal-content-padding) - 1em
+  );
+  background-color: var(--main-color);
+  margin: 0;
+  border-radius: 0 0.6em 0.6em 0.6em;
+}
+.filter-choice p {
+  margin: 0;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.clear-filter__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clear-filter__button {
+  font-size: 1.7em;
+  width: 7.5em;
+  height: 2em;
+  background-color: var(--main-color);
+  color: var(--main-text-color);
+  border: none;
+  border-radius: 0.6em;
+  margin: 0.4em 0;
+  cursor: pointer;
+}
+.clear-filter__button:hover {
+  filter: brightness(0.9);
+}
+
+.filter-form li {
+  width: 50%;
+  margin: 0.5em 0;
+}
+
+.filter-form label {
+  font-size: 1.5em;
+}
+
+.filter-form input[type="checkbox"] {
+  width: 1.5em;
+  height: 1.5em;
+}
