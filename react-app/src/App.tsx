@@ -15,7 +15,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "/grid", element: <GridPage /> },
       { path: "/flexbox", element: <FlexboxPage /> },
-      { path: "/table", element: <TablePage /> }
+      { path: "/table", element: <TablePage /> },
     ],
     errorElement: <ErrorPage />,
   },
