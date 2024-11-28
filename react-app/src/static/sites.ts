@@ -10,7 +10,7 @@ export const sites: Array<SidebarLinkProps> = [
     link: "/table",
   },
   {
-    label: "RecursiveRendering",
-    link: "/recursive",
+    label: "RecRndr",
+    link: "/recursive-rendering",
   },
 ];
