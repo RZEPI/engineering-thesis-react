@@ -12,8 +12,8 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "table", element: <TablePage /> },
-      { path: "recursive-rendering", element: <RecursivePage /> },
+      { path: "/table", element: <TablePage /> },
+      { path: "/recursive-rendering", element: <RecursivePage /> },
     ],
     errorElement: <ErrorPage />,
   },

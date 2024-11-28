@@ -12,5 +12,5 @@ export const sites: Array<SidebarLinkProps> = [
   {
     label: "RecRndr",
     link: "/recursive-rendering",
-  },
+  }
 ];
