@@ -1,0 +1,25 @@
+.select-container {
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.label {
+  font-size: var(--label-font-size);
+}
+
+.select {
+  text-align: center;
+  font-size: 1.2em;
+  padding: 0.3em;
+  color: var(--main-text-color);
+  background-color: var(--main-background-color-lighter);
+  border-color: var(--main-text-color);
+  border-radius: 0.6em;
+}
+
+@media (max-height: 1300px) {
+  .select-container {
+    margin-top: 0.7em;
+  }
+}

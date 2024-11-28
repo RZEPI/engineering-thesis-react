@@ -3,6 +3,7 @@ import "./App.css";
 import RootLayout from "./pages/RootLayout";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
+import FlexboxPage from "./pages/FlexboxPage";
 import TablePage from "./pages/TablePage";
 import RecursivePage from "./pages/RecursivePage.tsx";
 
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
+      { path: "/flexbox", element: <FlexboxPage /> },
       { path: "/table", element: <TablePage /> },
       { path: "/recursive-rendering", element: <RecursivePage /> },
     ],
