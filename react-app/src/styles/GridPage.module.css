@@ -1,19 +1,14 @@
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 body {
   --element-size: 100px;
 }
 
-.page-content > div > div {
-  margin-top: 25px;
-}
-
 .page-wrapper {
   z-index: -1;
   padding-top: 10px;
-  box-sizing: border-box;
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -23,11 +18,17 @@ body {
 
 .page-content {
   width: 60%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  display: block;
   background-color: inherit;
   align-items: center;
+}
+
+.page-content > * {
+  width: 100%;
+}
+
+.page-content > div {
+  margin-top: 25px;
 }
 
 .grid-main {

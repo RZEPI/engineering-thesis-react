@@ -116,43 +116,41 @@ export default function GridPage() {
   return (
     <div className={styles["page-wrapper"]}>
       <div className={styles["page-content"]}>
-        <div style={{ width: "100%", backgroundColor: "inherit" }}>
-          <div className={styles["windows-container"]}>
-            <GridButtonWindow title="Aspects">{aspectButtons}</GridButtonWindow>
-            <GridButtonWindow title="Grid options">
-              <GridConfigButton
-                name="Generate"
-                handleClick={() => {
-                  setElements(generateElements);
-                }}
-              />
-              <GridConfigButton
-                name={cssProps.gridAutoFlow}
-                handleClick={() => {
-                  const newProps: CSSProperties = {};
-                  newProps.gridAutoFlow =
-                    cssProps.gridAutoFlow == "dense" ? "row" : "dense";
-                  setGridCss(newProps);
-                }}
-              />
-              <GridConfigSlider
-                defaultValue={cssProps.gridTemplateColumns?.valueOf()}
-                name="Element size"
-                handleOnChange={setElementSizeHandler}
-              ></GridConfigSlider>
-              <GridConfigSlider
-                defaultValue={cssProps.gap?.valueOf()}
-                name="Gap size"
-                handleOnChange={setGapSizeHandler}
-              ></GridConfigSlider>
-            </GridButtonWindow>
-          </div>
-
-          <div className={styles["code-listing-wrapper"]}>
-            <CodeListing cssProps={cssProps} />
-          </div>
-          <Grid css={cssProps}>{renderedElements}</Grid>
+        <div className={styles["windows-container"]}>
+          <GridButtonWindow title="Aspects">{aspectButtons}</GridButtonWindow>
+          <GridButtonWindow title="Grid options">
+            <GridConfigButton
+              name="Generate"
+              handleClick={() => {
+                setElements(generateElements);
+              }}
+            />
+            <GridConfigButton
+              name={cssProps.gridAutoFlow}
+              handleClick={() => {
+                const newProps: CSSProperties = {};
+                newProps.gridAutoFlow =
+                  cssProps.gridAutoFlow == "dense" ? "row" : "dense";
+                setGridCss(newProps);
+              }}
+            />
+            <GridConfigSlider
+              defaultValue={cssProps.gridTemplateColumns?.valueOf()}
+              name="Element size"
+              handleOnChange={setElementSizeHandler}
+            ></GridConfigSlider>
+            <GridConfigSlider
+              defaultValue={cssProps.gap?.valueOf()}
+              name="Gap size"
+              handleOnChange={setGapSizeHandler}
+            ></GridConfigSlider>
+          </GridButtonWindow>
         </div>
+
+        <div className={styles["code-listing-wrapper"]}>
+          <CodeListing cssProps={cssProps} />
+        </div>
+        <Grid css={cssProps}>{renderedElements}</Grid>
       </div>
     </div>
   );
