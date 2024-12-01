@@ -1,5 +1,5 @@
 import { GridElementsProps } from "../../models/GridElementsProps";
-import { subtractWithSaturation8bit } from "../../utils";
+import { subtractWithSaturation8bit } from "../../util/util.ts";
 import styles from "../../styles/GridPage.module.css";
 
 export default function GridElement({
