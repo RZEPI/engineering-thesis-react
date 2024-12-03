@@ -51,6 +51,7 @@ export default function Sidebar() {
               {sites.map((site) => {
                 return (
                   <SidebarLink
+                    description=""
                     label={site.label}
                     link={site.link}
                     imageSrc={site.imageSrc}
