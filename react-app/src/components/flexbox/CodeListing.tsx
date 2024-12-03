@@ -4,28 +4,13 @@ import { useAppSelector } from "../../store/hooks";
 import styles from "../../styles/flexbox/CodeListing.module.css";
 
 import clipboardSign from "../../assets/clipboard-outline-svgrepo-com.svg";
+import { parseCssEntries } from "../../util/util";
 
 export default function CodeListing() {
   const flexClasses = useAppSelector(flexboxStyles);
 
-  const parsedEntries: { propertyKey: string; propertyValue: string }[] = [];
-
-  for (const [propertyKey, propertyValue] of Object.entries(flexClasses)) {
-    let upperCaseCharIdx = null;
-    let idx = 0;
-    for (const character of propertyKey) {
-      const code = character.charCodeAt(0);
-      if (code >= 65 && code <= 90) upperCaseCharIdx = idx;
-      idx++;
-    }
-    let parsedKey;
-    if (upperCaseCharIdx)
-      parsedKey =
-        `${propertyKey.substring(0, upperCaseCharIdx)}-${propertyKey.substring(upperCaseCharIdx)}`.toLowerCase();
-    else parsedKey = propertyKey;
-
-    parsedEntries.unshift({ propertyKey: parsedKey, propertyValue });
-  }
+  const parsedEntries: { propertyKey: string; propertyValue: string }[] =
+    parseCssEntries(flexClasses);
 
   function copyToClipboard() {
     let dataToClipboard: string;
