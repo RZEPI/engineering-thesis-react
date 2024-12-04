@@ -1,6 +1,6 @@
-import { SidebarLinkProps } from "../models/SidebarLink";
+import { Site } from "../models/Site";
 
-export const sites: Array<SidebarLinkProps> = [
+export const sites: Array<Site> = [
   {
     label: "Home",
     link: "/",
