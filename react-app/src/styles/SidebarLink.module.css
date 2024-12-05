@@ -28,5 +28,15 @@
 }
 
 .link img {
+  align-self: center;
   height: calc(3vh - 0.3em);
+}
+
+@media (max-height: 700px) {
+  .link {
+    max-height: unset;
+  }
+  .link img {
+    height: calc(7vh - 0.3em);
+  }
 }
