@@ -1,9 +1,9 @@
 .component {
-  margin: 10px 0;
-  padding: 20px;
+  margin: 0.7em;
+  padding: 1.5em;
   background-color: var(--main-color);
   color: white;
-  border-radius: 8px;
+  border-radius: 1em;
   text-align: center;
-  width: 150px;
+  width: 10vw;
 }

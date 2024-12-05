@@ -5,8 +5,8 @@ import Layout from "../components/UI/Layout";
 import styles from "../styles/animation/AnimatedPage.module.css";
 
 export default function AnimationPage() {
-  const [componentCount, setComponentCount] = useState<number>(8);
-  const [tempComponentCount, setTempComponentCount] = useState<number>(8);
+  const [componentCount, setComponentCount] = useState<number>(5);
+  const [tempComponentCount, setTempComponentCount] = useState<number>(5);
   const [isRight, setIsRight] = useState<boolean>(false);
 
   const toggleMovement = () => {

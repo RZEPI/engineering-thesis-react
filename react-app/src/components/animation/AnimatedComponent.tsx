@@ -10,7 +10,7 @@ export default function AnimatedComponent({
   return (
     <motion.div
       className={styles.component}
-      animate={{ x: isRight ? 1200 : 0 }}
+      animate={{ x: isRight ? "85vw" : 0 }}
       transition={{ duration: 0.5 }}
     >
       {name}
