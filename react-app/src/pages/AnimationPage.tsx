@@ -29,7 +29,7 @@ export default function AnimationPage() {
           onBlur={updateComponentCount}
         />
 
-        <button onClick={toggleMovement}>Toggle Components</button>
+        <button onClick={toggleMovement}>Animate</button>
       </div>
       <div className={styles.container}>
         <div className={styles.componentList}>
