@@ -18,29 +18,30 @@ export default function AnimationPage() {
   };
 
   return (
-    //<Layout title="Animated Components">
-    <div>
-      <label htmlFor="component-count">Number of Components: </label>
-      <input
-        type="number"
-        id="component-count"
-        value={tempComponentCount}
-        onChange={(e) => setTempComponentCount(Number(e.target.value))}
-        onBlur={updateComponentCount}
-      />
+    <Layout title="Animated Components">
+      <div>
+        <label htmlFor="component-count">Number of Components: </label>
+        <input
+          type="number"
+          id="component-count"
+          value={tempComponentCount}
+          onChange={(e) => setTempComponentCount(Number(e.target.value))}
+          onBlur={updateComponentCount}
+        />
 
-      <button onClick={toggleMovement}>Toggle Components</button>
-
-      <div className={styles.componentList}>
-        {Array.from({ length: componentCount }).map((_, index) => (
-          <AnimatedComponent
-            key={index}
-            name={`Component ${index + 1}`}
-            isRight={isRight}
-          />
-        ))}
+        <button onClick={toggleMovement}>Toggle Components</button>
       </div>
-    </div>
-    //</Layout>
+      <div className={styles.container}>
+        <div className={styles.componentList}>
+          {Array.from({ length: componentCount }).map((_, index) => (
+            <AnimatedComponent
+              key={index}
+              name={`Component ${index + 1}`}
+              isRight={isRight}
+            />
+          ))}
+        </div>
+      </div>
+    </Layout>
   );
 }
