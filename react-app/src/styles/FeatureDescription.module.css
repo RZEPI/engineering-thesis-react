@@ -74,3 +74,9 @@
     border-left: 1px solid black !important;
     border-right: 0px !important;
 }
+@media (max-height: 1400px) {
+    .container {
+        margin-top: 0;
+        height: 60vh;
+    }
+}
