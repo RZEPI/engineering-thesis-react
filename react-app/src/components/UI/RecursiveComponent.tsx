@@ -2,8 +2,8 @@ import { RecursiveProps } from "../../models/RecursiveProps.ts";
 import styles from '../../styles/RecursiveComponent.module.css';
 
 const getColor = (depth : number): string => {
-  const hue = 190 + (depth * 3);
-  const saturation = 96+ (depth * 3);
+  const hue = (190 + (depth * 3)) % 255;
+  const saturation = (96+ (depth * 3)) % 255;
   const lightness = 67;
 
   return `hsl(${hue}, ${saturation}%, ${lightness}%)`;

@@ -28,11 +28,11 @@ input[type="number"] {
     font-size: 1em;
     border: 1px solid #ccc;
     border-radius: 4px;
-     width: 220px;
+    width: 220px;
     text-align: center;
   }
 
-  button {
+button {
       padding: 0.5em 1em;
       font-size: 1em;
       border: none;
