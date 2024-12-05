@@ -25,7 +25,9 @@ export default function FeatureDescription({site, isFirst, isLast, onPreviousCli
                 </p>
                 <button className={rightButtonClass} onClick={handleNextClick}>&gt;</button>
             </div>
-            <Link to={site.link}> Go </Link>
+            <div className={styles["goto-button__container"]}>
+                {!isFirst && <Link to={site.link}> Go </Link>}
+            </div>
      </div>
     );
 }
