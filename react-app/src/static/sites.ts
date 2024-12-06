@@ -15,6 +15,9 @@ export const sites: Array<SidebarLinkProps> = [
     link: "/table",
   },
   {
+    label: "Animation",
+    link: "/animation",
+  },
     label: "Grid",
     link: "/grid",
   },
