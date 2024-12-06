@@ -21,7 +21,6 @@ import {
 import styles from "../styles/table/TablePage.module.css";
 import { ActionFunctions } from "../models/table/TableActionsProps";
 
-
 let key: number = 0;
 
 export default function TablePage() {
@@ -96,7 +95,7 @@ export default function TablePage() {
     for (let i = 0; i < tmpArray.length; i += n) {
       tmpArray[i] = {
         ...tableContent[i],
-        name: "Changed Name " + i,
+        name: "Changed Name " + tableContent[i].name,
       };
     }
 
@@ -109,7 +108,7 @@ export default function TablePage() {
     for (let i = 0; i < tableContent.length; i++) {
       tmpArray.push({
         id: key++,
-        name: "Replaced " + i,
+        name: "Replaced " + tableContent[i].name,
         level: 1,
       });
     }
@@ -186,7 +185,7 @@ export default function TablePage() {
     filter: StringFilter[],
   ): boolean {
     return (
-      filter.find((name) => name.value === givenName && name.isChecked) !==
+      filter.find((name) => (givenName.includes(name.value) && name.isChecked) || givenName === "") !==
       undefined
     );
   }
