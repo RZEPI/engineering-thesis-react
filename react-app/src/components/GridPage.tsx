@@ -126,7 +126,7 @@ export default function GridPage() {
               }}
             />
             <GridConfigButton
-              name={cssProps.gridAutoFlow}
+              name={cssProps.gridAutoFlow as string}
               handleClick={() => {
                 const newProps: CSSProperties = {};
                 newProps.gridAutoFlow =
@@ -146,10 +146,7 @@ export default function GridPage() {
             ></GridConfigSlider>
           </GridButtonWindow>
         </div>
-
-        <div className={styles["code-listing-wrapper"]}>
-          <CodeListing cssProps={cssProps} />
-        </div>
+        <CodeListing cssProps={cssProps} />
         <Grid css={cssProps}>{renderedElements}</Grid>
       </div>
     </div>
