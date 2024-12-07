@@ -126,7 +126,7 @@ export default function GridPage() {
               }}
             />
             <GridConfigButton
-              name={cssProps.gridAutoFlow}
+              name={cssProps.gridAutoFlow as string}
               handleClick={() => {
                 const newProps: CSSProperties = {};
                 newProps.gridAutoFlow =
