@@ -19,7 +19,7 @@ export default function AnimationPage() {
 
   return (
     <Layout title="Animated Components">
-      <div>
+      <div className={styles["animation-control"]}>
         <label htmlFor="component-count">Number of Components: </label>
         <input
           type="number"
@@ -32,7 +32,7 @@ export default function AnimationPage() {
         <button onClick={toggleMovement}>Animate</button>
       </div>
       <div className={styles.container}>
-        <div className={styles.componentList}>
+        <div className={styles["component-list"]}>
           {Array.from({ length: componentCount }).map((_, index) => (
             <AnimatedComponent
               key={index}

@@ -2,13 +2,13 @@
   width: 100%;
 }
 
-.componentList {
+.component-list {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-button {
+.animation-control button {
   margin: 1em;
   color: var(--main-text-color);
   background-color: var(--main-color);
@@ -17,12 +17,12 @@ button {
   padding: 0.7em;
 }
 
-label {
+.animation-control label {
   color: var(--main-text-color);
   font-size: 1.3em;
 }
 
-input {
+.animation-control input {
   color: var(--main-text-color);
   background-color: var(--main-background-color);
   border-radius: 0.5em;
