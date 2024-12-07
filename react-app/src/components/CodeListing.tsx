@@ -5,10 +5,10 @@ import clipboardSign from "../assets/clipboard-outline-svgrepo-com.svg";
 import styles from "../styles/flexbox/CodeListing.module.css";
 export function CodeListing({ cssProps }: { cssProps: CSSProperties }) {
   function generateEntries() {
-    return parsedEntries.map((e, index) => (
-      <li key={e.propertyKey}>
+    return parsedEntries.map((entry, index) => (
+      <li key={entry.propertyKey}>
         <span style={{ paddingLeft: "2em" }}>
-          {e.propertyKey}: {e.propertyValue};
+          {entry.propertyKey}: {entry.propertyValue};
         </span>
         {index < parsedEntries.length - 1 && <br />}
       </li>
