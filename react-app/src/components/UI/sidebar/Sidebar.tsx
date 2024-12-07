@@ -38,7 +38,7 @@ export default function Sidebar() {
               ease: isExpanded ? "easeOut" : "easeIn",
             }}
             initial={{ width: 0 }}
-            animate={{ width: "35%" }}
+            animate={{ width: "35vw" }}
             exit={{ width: 0 }}
           >
             <motion.ul

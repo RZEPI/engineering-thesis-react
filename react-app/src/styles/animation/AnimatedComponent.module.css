@@ -1,0 +1,9 @@
+.component {
+  margin: 0.7em;
+  padding: 1.5em;
+  background-color: var(--main-color);
+  color: var(--main-text-color);
+  border-radius: 1em;
+  text-align: center;
+  width: 10vw;
+}
