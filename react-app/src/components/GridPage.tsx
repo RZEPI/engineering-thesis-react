@@ -125,15 +125,25 @@ export default function GridPage() {
         <div className={styles["windows-container"]}>
           <GridButtonWindow title="Aspects">{aspectButtons}</GridButtonWindow>
           <GridButtonWindow title="Grid options">
-            <GridConfigButton name="Generate" handleClick={() => {setElements(generateElements);}}/>
-            <GridConfigButton name={cssProps.gridAutoFlow as string} handleClick={changeGridAutoFlow} />
+            <GridConfigButton
+              name="Generate"
+              handleClick={() => {
+                setElements(generateElements);
+              }}
+            />
+            <GridConfigButton
+              name={cssProps.gridAutoFlow as string}
+              handleClick={changeGridAutoFlow}
+            />
             <GridConfigSlider
               defaultValue={cssProps.gridTemplateColumns?.valueOf()}
-              name="Element size" handleOnChange={setElementSizeHandler}
+              name="Element size"
+              handleOnChange={setElementSizeHandler}
             ></GridConfigSlider>
             <GridConfigSlider
               defaultValue={cssProps.gap?.valueOf()}
-              name="Gap size" handleOnChange={setGapSizeHandler}
+              name="Gap size"
+              handleOnChange={setGapSizeHandler}
             ></GridConfigSlider>
           </GridButtonWindow>
         </div>
