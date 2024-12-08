@@ -113,6 +113,12 @@ export default function GridPage() {
     setSelectedAspects(newAspects);
   }
 
+  function changeGridAutoFlow() {
+    const newProps: CSSProperties = {};
+    newProps.gridAutoFlow = cssProps.gridAutoFlow == "dense" ? "row" : "dense";
+    setGridCss(newProps);
+  }
+
   return (
     <div className={styles["page-wrapper"]}>
       <div className={styles["page-content"]}>
@@ -127,12 +133,7 @@ export default function GridPage() {
             />
             <GridConfigButton
               name={cssProps.gridAutoFlow as string}
-              handleClick={() => {
-                const newProps: CSSProperties = {};
-                newProps.gridAutoFlow =
-                  cssProps.gridAutoFlow == "dense" ? "row" : "dense";
-                setGridCss(newProps);
-              }}
+              handleClick={changeGridAutoFlow}
             />
             <GridConfigSlider
               defaultValue={cssProps.gridTemplateColumns?.valueOf()}

@@ -1,5 +1,4 @@
-.loading-fallback
-{
+.loading-fallback {
   grid-area: preview;
   display: flex;
   justify-content: center;

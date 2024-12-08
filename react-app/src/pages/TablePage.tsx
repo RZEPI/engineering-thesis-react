@@ -185,8 +185,11 @@ export default function TablePage() {
     filter: StringFilter[],
   ): boolean {
     return (
-      filter.find((name) => (givenName.includes(name.value) && name.isChecked) || givenName === "") !==
-      undefined
+      filter.find(
+        (name) =>
+          (givenName.includes(name.value) && name.isChecked) ||
+          givenName === "",
+      ) !== undefined
     );
   }
 
