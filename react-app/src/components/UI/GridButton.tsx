@@ -3,7 +3,7 @@ export default function GridConfigButton({
   handleClick,
   style,
 }: {
-  name?: string;
+  name: string;
   handleClick: () => void;
   style?: object;
 }) {
