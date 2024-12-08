@@ -19,10 +19,12 @@ export const sites: Array<Site> = [
   },
   {
     label: "Animation",
+    description: "<TODO>",
     link: "/animation",
   },
   {
     label: "Grid",
+    description: "<TODO>",
     link: "/grid",
   },
 ];
