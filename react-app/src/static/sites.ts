@@ -21,8 +21,15 @@ export const sites: Array<Site> = [
     link: "/table",
   },
   {
+    label: "RecursiveRendering",
+    link: "/recursive-rendering",
+    description: 
+      "Page responsible for testing recursive rendering of components.",
+  },
+  {
     label: "Animation",
-    description: "Page responsible for testing animations, focuses on evaluating the performance and visual fluidity.",
+    description: 
+      "Page responsible for testing animations, focuses on evaluating the performance and visual fluidity.",
     link: "/animation",
   },
   {
