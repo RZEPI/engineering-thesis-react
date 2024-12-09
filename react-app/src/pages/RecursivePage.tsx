@@ -26,7 +26,7 @@ export default function RecursivePage() {
                         placeholder="Amount of components"
                         min="0"
                     />
-                    <button onClick={() => handleGenerateComponents()}>Generate Components</button>
+                    <button onClick={handleGenerateComponents}>Generate Components</button>
                 </div>
                 <div>
                     {maxDepth > 0 && (
