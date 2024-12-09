@@ -31,16 +31,14 @@ export default function AnimationPage() {
 
         <button onClick={toggleMovement}>Animate</button>
       </div>
-      <div className={styles.container}>
-        <div className={styles["component-list"]}>
-          {Array.from({ length: componentCount }).map((_, index) => (
-            <AnimatedComponent
-              key={index}
-              name={`Component ${index + 1}`}
-              isRight={isRight}
-            />
-          ))}
-        </div>
+      <div className={styles["component-list"]}>
+        {Array.from({ length: componentCount }).map((_, index) => (
+          <AnimatedComponent
+            key={index}
+            name={`Component ${index + 1}`}
+            isRight={isRight}
+          />
+        ))}
       </div>
     </Layout>
   );

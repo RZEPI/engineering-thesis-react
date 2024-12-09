@@ -22,7 +22,7 @@ export const sites: Array<Site> = [
   },
   {
     label: "Animation",
-    description: "<TODO>",
+    description: "Page responsible for testing animations, focuses on evaluating the performance and visual fluidity.",
     link: "/animation",
   },
   {
