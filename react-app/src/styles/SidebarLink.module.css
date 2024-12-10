@@ -19,7 +19,7 @@
 }
 .link a:active,
 .link a.active {
-  color: #fff;
+  color: var(--main-text-color);
   background-color: var(--active-element-color);
 }
 
