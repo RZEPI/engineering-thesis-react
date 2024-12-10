@@ -15,6 +15,11 @@ export const sites: Array<Site> = [
       "Page responsible for testing flexbox properites. It's purpose is to measure state menagement tools.",
   },
   {
+    label: "Grid",
+    description: "<TODO>",
+    link: "/grid",
+  },
+  {
     label: "Table",
     description:
       "Table page, page responsible for testing rendering of big amounts of data. It also displays filtering modal.",
@@ -31,10 +36,5 @@ export const sites: Array<Site> = [
     description: 
       "Page responsible for testing animations, focuses on evaluating the performance and visual fluidity.",
     link: "/animation",
-  },
-  {
-    label: "Grid",
-    description: "<TODO>",
-    link: "/grid",
   },
 ];
