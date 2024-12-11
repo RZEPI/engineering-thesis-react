@@ -1,11 +1,11 @@
-import { describe, it, expect, vi } from "vitest";
 import { render } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import ToggleInput from "../../../src/components/flexbox/form/ToggleInput";
 
 describe("ToggleInput", () => {
-  it("Calls the toggleFunc prop when ToggleSwitch is clicked", async () => {
+  it("Should call the toggleFunc prop when ToggleSwitch is clicked", async () => {
     const mockFunc = vi.fn();
 
     const { container } = render(

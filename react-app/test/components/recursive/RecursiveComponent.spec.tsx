@@ -3,7 +3,7 @@ import { describe, it, expect } from "vitest";
 import RecursiveComponent from "../../../src/components/recursive/RecursiveComponent";
 
 describe("RecursiveComponent", () => {
-  it("Renders 4 instances of Recursive Component", () => {
+  it("Should render 4 instances of Recursive Component", () => {
     const { container } = render(
       <RecursiveComponent message="" depth={1} maxDepth={4} />,
     );
