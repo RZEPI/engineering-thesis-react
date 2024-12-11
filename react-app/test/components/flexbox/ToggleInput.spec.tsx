@@ -1,7 +1,6 @@
 import { render } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
-import "@testing-library/jest-dom";
 import ToggleInput from "../../../src/components/flexbox/form/ToggleInput";
 
 describe("ToggleInput", () => {
@@ -17,7 +16,7 @@ describe("ToggleInput", () => {
     );
 
     const checkbox = container.querySelector('input[type="checkbox"]');
-    expect(checkbox).toBeInTheDocument();
+    expect(container.contains(checkbox)).toBe(true);
 
     await userEvent.click(checkbox);
 

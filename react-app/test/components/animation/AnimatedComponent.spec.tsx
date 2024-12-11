@@ -1,6 +1,5 @@
 import { render, waitFor } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import "@testing-library/jest-dom";
 import AnimatedComponent from "../../../src/components/animation/AnimatedComponent";
 
 describe("AnimatedComponent", () => {
@@ -18,7 +17,7 @@ describe("AnimatedComponent", () => {
 
     waitFor(() => {
       const component = container.querySelector("div");
-      expect(component).toBeInTheDocument();
+      expect(container.contains(component)).toBe(true);
 
       expect(component.style.transform).toBe("translateX(85vw)");
     });
@@ -31,7 +30,7 @@ describe("AnimatedComponent", () => {
 
     waitFor(() => {
       const component = container.querySelector("div");
-      expect(component).toBeInTheDocument();
+      expect(container.contains(component)).toBe(true);
 
       expect(component.style.transform).toBe("translateX(0)");
     });
