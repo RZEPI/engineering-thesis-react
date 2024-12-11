@@ -41,7 +41,7 @@ export default function Sidebar() {
             animate={{ width: "35vw" }}
             exit={{ width: 0 }}
           >
-            <motion.ul
+            <motion.ul        
               className={styles["link-container"]}
               transition={{
                 duration: 0.1,
