@@ -9,13 +9,13 @@ export default function AnimationPage() {
   const [tempComponentCount, setTempComponentCount] = useState<number>(5);
   const [isRight, setIsRight] = useState<boolean>(false);
 
-  const toggleMovement = () => {
+  function toggleMovement() {
     setIsRight(!isRight);
-  };
+  }
 
-  const updateComponentCount = () => {
-    setComponentCount(Math.max(1, tempComponentCount));
-  };
+  function updateComponentCount() {
+    setComponentCount(tempComponentCount);
+  }
 
   return (
     <Layout title="Animated Components">
@@ -27,6 +27,7 @@ export default function AnimationPage() {
           value={tempComponentCount}
           onChange={(e) => setTempComponentCount(Number(e.target.value))}
           onBlur={updateComponentCount}
+          min="1"
         />
 
         <button onClick={toggleMovement}>Animate</button>

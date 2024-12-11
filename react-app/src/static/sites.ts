@@ -37,4 +37,9 @@ export const sites: Array<Site> = [
       "Page responsible for testing animations, focuses on evaluating the performance and visual fluidity.",
     link: "/animation",
   },
+  {
+    label: "Cache",
+    description: "<TODO>",
+    link: "/cache",
+  },
 ];
