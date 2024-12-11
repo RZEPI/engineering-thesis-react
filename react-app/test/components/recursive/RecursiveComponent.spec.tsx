@@ -5,7 +5,7 @@ import RecursiveComponent from "../../../src/components/recursive/RecursiveCompo
 describe("RecursiveComponent", () => {
   it("Renders 4 instances of Recursive Component", () => {
     const { container } = render(
-      <RecursiveComponent message="Depth:" depth={1} maxDepth={4} />,
+      <RecursiveComponent message="" depth={1} maxDepth={4} />,
     );
 
     const instances = container.querySelectorAll('[role="recursivecomponent"]');

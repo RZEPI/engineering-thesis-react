@@ -4,13 +4,11 @@ import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import Sidebar from "../../../src/components/UI/sidebar/Sidebar"; // Ścieżka do komponentu
 
-// Opis testów
 describe("Sidebar", () => {
   it("Should render collapsed", () => {
     const { container } = render(<Sidebar />);
 
-    const navElement = container.querySelector("nav");
-    expect(navElement).not.toBeInTheDocument();
+    expect(container.querySelector("nav")).not.toBeInTheDocument();
   });
 
   it("Should render Navbar after pressing the button", () => {
