@@ -30,4 +30,9 @@ export const sites: Array<Site> = [
     description: "<TODO>",
     link: "/grid",
   },
+  {
+    label: "Cache",
+    description: "<TODO>",
+    link: "/cache",
+  },
 ];

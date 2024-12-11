@@ -7,6 +7,7 @@ import FlexboxPage from "./pages/FlexboxPage";
 import TablePage from "./pages/TablePage";
 import AnimationPage from "./pages/AnimationPage";
 import GridPage from "./components/GridPage";
+import CachePage from "./pages/CachePage";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "/flexbox", element: <FlexboxPage /> },
       { path: "/table", element: <TablePage /> },
       { path: "/animation", element: <AnimationPage /> },
+      { path: "/cache", element: <CachePage /> },
     ],
     errorElement: <ErrorPage />,
   },
