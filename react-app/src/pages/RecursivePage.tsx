@@ -23,7 +23,7 @@ export default function RecursivePage() {
               type="number"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.valueAsNumber)}
-              placeholder="Amount of components"
+              placeholder="0"
               min="0"
             />
             <button onClick={handleGenerateComponents}>
