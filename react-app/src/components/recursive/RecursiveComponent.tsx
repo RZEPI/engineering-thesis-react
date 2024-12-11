@@ -14,7 +14,7 @@ export default function RecursiveComponent({
   maxDepth,
 }: RecursiveComponentProps) {
   return (
-    <div className={styles["recursive-component"]}>
+    <div className={styles["recursive-component"]}  role="recursivecomponent">
       <p style={{ color: getColor(depth) }}>
         {message} {depth}
       </p>

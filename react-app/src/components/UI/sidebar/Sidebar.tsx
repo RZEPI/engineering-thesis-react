@@ -22,7 +22,7 @@ export default function Sidebar() {
   return (
     <>
       <header className={headerClasses}>
-        <div className={buttonClasses} onClick={toggleExpand}>
+        <div className={buttonClasses} onClick={toggleExpand} role="burgerbutton">
           <span></span>
           <span></span>
           <span></span>
