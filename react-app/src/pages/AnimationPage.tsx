@@ -9,11 +9,11 @@ export default function AnimationPage() {
   const [tempComponentCount, setTempComponentCount] = useState<number>(5);
   const [isRight, setIsRight] = useState<boolean>(false);
 
-  const toggleMovement = () => {
+  function toggleMovement() {
     setIsRight(!isRight);
   };
 
-  const updateComponentCount = () => {
+  function updateComponentCount () {
     setComponentCount(Math.max(1, tempComponentCount));
   };
 
