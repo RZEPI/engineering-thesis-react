@@ -11,6 +11,7 @@ export default function CachePage() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const memoizedResult = useMemo(() => {
+    if (iterations === 0) return 0;
     return calculatePi(iterations * 1000000);
   }, [iterations]);
 
@@ -30,12 +31,12 @@ export default function CachePage() {
 
   function handleCalculate() {
     setCalculate(true);
-    console.log(calculate); //czemy false? co to za jakies asynchroniczne, przez to Calculating sie nie wyświetla
+    console.log(calculate);
     const value = inputRef.current?.value;
     if (value) {
       setIterations(Number(value));
     }
-    setResult(memoizedResult); // wyswietla Nan mimo ze ustawiam na 100mln, o co cho w tym reactcie
+    setResult(memoizedResult);
   }
 
   function handleReset() {
@@ -74,13 +75,9 @@ export default function CachePage() {
           <div className={styles["cache-control"]}>
             <h3>Result:</h3>
             {result !== null ? (
-              <p>Calculated value of Pi: {result}</p>
+              <p>Calculated value of π: {result}</p>
             ) : (
-              <p>
-                {calculate
-                  ? "Calculating..."
-                  : 'Click "Calculate" to see the result.'}
-              </p>
+              <p>Click "Calculate" to see the result.</p>
             )}
           </div>
         </div>

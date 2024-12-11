@@ -11,11 +11,11 @@ export default function AnimationPage() {
 
   function toggleMovement() {
     setIsRight(!isRight);
-  };
+  }
 
-  function updateComponentCount () {
-    setComponentCount(Math.max(1, tempComponentCount));
-  };
+  function updateComponentCount() {
+    setComponentCount(tempComponentCount);
+  }
 
   return (
     <Layout title="Animated Components">
@@ -27,6 +27,7 @@ export default function AnimationPage() {
           value={tempComponentCount}
           onChange={(e) => setTempComponentCount(Number(e.target.value))}
           onBlur={updateComponentCount}
+          min="1"
         />
 
         <button onClick={toggleMovement}>Animate</button>
