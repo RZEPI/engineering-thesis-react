@@ -39,7 +39,7 @@ export default function CachePage() {
     setResult(memoizedResult);
   }
 
-  function handleReset() {
+  function handleClear() {
     setCalculate(false);
     setResult(null);
   }
@@ -70,7 +70,7 @@ export default function CachePage() {
             <h3>Iterations (in millions):</h3>
             <input ref={inputRef} type="number" defaultValue={100} min={1} />
             <button onClick={handleCalculate}>Calculate</button>
-            <button onClick={handleReset}>Reset</button>
+            <button onClick={handleClear}>Clear</button>
           </div>
           <div className={styles["cache-control"]}>
             <h3>Result:</h3>
