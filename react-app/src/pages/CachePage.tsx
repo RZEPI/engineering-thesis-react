@@ -31,7 +31,6 @@ export default function CachePage() {
 
   function handleCalculate() {
     setCalculate(true);
-    console.log(calculate);
     const value = inputRef.current?.value;
     if (value) {
       setIterations(Number(value));
