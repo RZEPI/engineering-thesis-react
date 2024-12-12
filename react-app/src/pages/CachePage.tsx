@@ -6,12 +6,11 @@ import styles from "../styles/cache/CachePage.module.css";
 export default function CachePage() {
   const [calculate, setCalculate] = useState<boolean>(false);
   const [result, setResult] = useState<number | null>(null);
-  const [iterations, setIterations] = useState<number>(0);
+  const [iterations, setIterations] = useState<number>(100);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
   const memoizedResult = useMemo(() => {
-    if (iterations === 0) return 0;
     return calculatePi(iterations * 1000000);
   }, [iterations]);
 
