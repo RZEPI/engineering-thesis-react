@@ -39,7 +39,7 @@ export const sites: Array<Site> = [
   },
   {
     label: "Cache",
-    description: "A page dedicated to testing caching, evaluating the efficiency of useMemo and computed properties.",
+    description: "A page dedicated to testing caching, evaluating the efficiency of useMemo() and computed.",
     link: "/cache",
   },
 ];
