@@ -4,15 +4,10 @@ import Layout from "../components/UI/Layout";
 import styles from "../styles/cache/CachePage.module.css";
 
 export default function CachePage() {
-  const [calculate, setCalculate] = useState<boolean>(false);
   const [result, setResult] = useState<number | null>(null);
   const [iterations, setIterations] = useState<number>(100);
 
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const memoizedResult = useMemo(() => {
-    return calculatePi(iterations * 1000000);
-  }, [iterations]);
 
   function calculatePi(iterations: number) {
     let insideCircle = 0;
@@ -28,17 +23,24 @@ export default function CachePage() {
     return pi;
   }
 
+  const memoizedResult = useMemo(() => {
+    console.time("calculationTime");
+    const calcResult = calculatePi(iterations * 1000000);
+    console.timeEnd("calculationTime");
+    return calcResult;
+  }, [iterations]);
+  
   function handleCalculate() {
-    setCalculate(true);
     const value = inputRef.current?.value;
     if (value) {
       setIterations(Number(value));
     }
+    console.time("referenceTime");
     setResult(memoizedResult);
+    console.timeEnd("referenceTime");
   }
-
+  
   function handleClear() {
-    setCalculate(false);
     setResult(null);
   }
 
