@@ -16,7 +16,7 @@ export const sites: Array<Site> = [
   },
   {
     label: "Grid",
-    description: "<TODO>",
+    description: "Page responsible for testing grid proprties. It uses state management via props.",
     link: "/grid",
   },
   {
