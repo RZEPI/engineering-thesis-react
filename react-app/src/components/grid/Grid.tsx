@@ -1,5 +1,5 @@
-import styles from "../styles/GridPage.module.css";
-import { GridProps } from "../models/GridProps";
+import styles from "../../styles/GridPage.module.css";
+import { GridProps } from "../../models/grid/GridProps";
 
 export default function Grid({ css, children }: GridProps) {
   return (

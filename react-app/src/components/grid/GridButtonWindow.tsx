@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import styles from "../styles/GridPage.module.css";
+import styles from "../../styles/GridPage.module.css";
 
 export default function GridButtonWindow({
   children,

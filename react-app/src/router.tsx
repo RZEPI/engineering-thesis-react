@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "./pages/RootLayout";
 import HomePage from "./pages/HomePage";
-import GridPage from "./components/GridPage";
 import FlexboxPage from "./pages/FlexboxPage";
+import GridPage from "./pages/GridPage";
 import TablePage from "./pages/TablePage";
 import RecursivePage from "./pages/RecursivePage";
 import AnimationPage from "./pages/AnimationPage";
