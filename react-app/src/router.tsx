@@ -7,6 +7,7 @@ import TablePage from "./pages/TablePage";
 import RecursivePage from "./pages/RecursivePage";
 import AnimationPage from "./pages/AnimationPage";
 import ErrorPage from "./pages/ErrorPage";
+import CachePage from "./pages/CachePage";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "/table", element: <TablePage /> },
       { path: "/recursive-rendering", element: <RecursivePage /> },
       { path: "/animation", element: <AnimationPage /> },
+      { path: "/cache", element: <CachePage /> },
     ],
     errorElement: <ErrorPage />,
   },
