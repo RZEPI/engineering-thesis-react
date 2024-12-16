@@ -6,8 +6,6 @@
 }
 
 .tabs li {
-  height: 1em;
-  width: 3em;
   text-align: center;
   margin-right: 0.9em;
   cursor: pointer;
