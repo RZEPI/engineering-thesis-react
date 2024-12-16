@@ -22,7 +22,7 @@ export default function Sidebar() {
   return (
     <>
       <header className={headerClasses}>
-        <div className={buttonClasses} onClick={toggleExpand}>
+        <div className={buttonClasses} onClick={toggleExpand} role="burgerbutton">
           <span></span>
           <span></span>
           <span></span>
@@ -41,7 +41,7 @@ export default function Sidebar() {
             animate={{ width: "35vw" }}
             exit={{ width: 0 }}
           >
-            <motion.ul
+            <motion.ul        
               className={styles["link-container"]}
               transition={{
                 duration: 0.1,

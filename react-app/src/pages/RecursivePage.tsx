@@ -8,9 +8,9 @@ export default function RecursivePage() {
   const depth = 1;
   const [maxDepth, setMaxDepth] = useState(0);
   const [inputValue, setInputValue] = useState(0);
-
+  const MAX_DEPTH = 1408;
   const handleGenerateComponents = () => {
-    const validatedValue = inputValue > 1408 ? 1408 : inputValue;
+    const validatedValue = inputValue > MAX_DEPTH ? MAX_DEPTH : inputValue;
     setMaxDepth(validatedValue);
     setInputValue(validatedValue);
   };
@@ -23,7 +23,7 @@ export default function RecursivePage() {
               type="number"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.valueAsNumber)}
-              placeholder="Amount of components"
+              placeholder="0"
               min="0"
             />
             <button onClick={handleGenerateComponents}>

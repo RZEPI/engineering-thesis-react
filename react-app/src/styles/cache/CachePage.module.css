@@ -1,0 +1,49 @@
+.row-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-panel {
+  flex: 2;
+  padding: 0.7em;
+  border-right: 1px solid var(--main-color);
+}
+
+.right-panel {
+  flex: 1;
+  padding: 0.7em;
+  margin-left: 3vw;
+}
+
+.cache-control input {
+  width: 5vw;
+  margin-right: 1vw;
+  padding: 0.3em;
+  font-size: 1em;
+  color: var(--main-text-color);
+  background-color: var(--main-background-color);
+  border-radius: 0.5em;
+}
+
+.cache-control button {
+  margin-right: 0.5vw;
+  padding: 0.7em;
+  font-size: 1em;
+  border-radius: 1em;
+  background-color: var(--main-color);
+  color: var(--main-text-color);
+}
+
+.cache-control button:hover {
+  background-color: var(--hover-element-color);
+}
+.cache-control h2,
+h3 {
+  font-size: 1.5em;
+  color: var(--main-text-color);
+}
+
+.cache-control p {
+  font-size: 1.2em;
+  color: var(--main-text-color);
+}
