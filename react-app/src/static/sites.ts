@@ -16,7 +16,8 @@ export const sites: Array<Site> = [
   },
   {
     label: "Grid",
-    description: "Page responsible for testing grid proprties. It uses state management via props.",
+    description:
+      "Page responsible for testing grid proprties. It uses state management via props.",
     link: "/grid",
   },
   {
@@ -28,18 +29,19 @@ export const sites: Array<Site> = [
   {
     label: "Recursive Rendering",
     link: "/recursive-rendering",
-    description: 
+    description:
       "Page responsible for testing recursive rendering of components.",
   },
   {
     label: "Animation",
-    description: 
+    description:
       "Page responsible for testing animations, focuses on evaluating the performance and visual fluidity.",
     link: "/animation",
   },
   {
     label: "Cache",
-    description: "A page dedicated to testing caching, evaluating the efficiency of useMemo() and computed.",
+    description:
+      "A page dedicated to testing caching, evaluating the efficiency of useMemo() and computed.",
     link: "/cache",
   },
 ];

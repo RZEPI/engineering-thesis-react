@@ -29,7 +29,7 @@ export default function CachePage() {
     console.timeEnd("calculationTime");
     return calcResult;
   }, [iterations]);
-  
+
   function handleCalculate() {
     const value = inputRef.current?.value;
     if (value) {
@@ -39,7 +39,7 @@ export default function CachePage() {
     setResult(memoizedResult);
     console.timeEnd("referenceTime");
   }
-  
+
   function handleClear() {
     setResult(null);
   }

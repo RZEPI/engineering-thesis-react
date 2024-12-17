@@ -1,4 +1,4 @@
-import { AspectState } from "../models/AspectsState";
+import { AspectState } from "../models/grid/AspectsState";
 
 export const GridInitialElementsAspects: AspectState[] = [
   {

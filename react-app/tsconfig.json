@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
-    "jsx": "react-jsx",
+    "jsx": "react-jsx"
   },
   "files": [],
   "references": [

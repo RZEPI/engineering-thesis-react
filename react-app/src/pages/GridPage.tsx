@@ -1,15 +1,15 @@
 import { CSSProperties, useState } from "react";
 import styles from "../styles/GridPage.module.css";
 import { colors } from "../static/GridElements";
-import GridConfigButton from "./UI/GridButton";
-import GridButtonWindow from "./GridButtonWindow";
-import { GridConfigSlider } from "./GridConfigSlider.tsx";
-import { CodeListing } from "./CodeListing.tsx";
-import Grid from "./Grid.tsx";
-import { AspectState } from "../models/AspectsState.ts";
-import GridElement from "./UI/GridElement.tsx";
-import { GridElementModel } from "../models/GridElementModel.ts";
 import { GridInitialElementsAspects } from "../static/GridInitialElementsAspects.ts";
+import GridElement from "../components/UI/GridElement.tsx";
+import GridConfigButton from "../components/UI/GridButton.tsx";
+import GridButtonWindow from "../components/grid/GridButtonWindow.tsx";
+import { GridConfigSlider } from "../components/grid/GridConfigSlider.tsx";
+import { CodeListing } from "../components/CodeListing.tsx";
+import Grid from "../components/grid/Grid.tsx";
+import { AspectState } from "../models/grid/AspectsState.ts";
+import { GridElementModel } from "../models/grid/GridElementModel.ts";
 
 export default function GridPage() {
   const numberOfElements = 20;

@@ -16,32 +16,31 @@ export default function RecursivePage() {
   };
 
   return (
-      <Layout title="Recursive Rendering">
-        <div className={styles["recursive-page"]}>
-          <div className={styles["input-container"]}>
-            <input
-              type="number"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.valueAsNumber)}
-              placeholder="0"
-              min="0"
-            />
-            <button onClick={handleGenerateComponents}>
-              Generate Components
-            </button>
-          </div>
-          <div>
-            {maxDepth > 0 && (
-              <RecursiveComponent
-                message={message}
-                depth={depth}
-                maxDepth={maxDepth}
-              />
-            )}
-          </div>
-          <div className={styles["gradient"]}></div>
+    <Layout title="Recursive Rendering">
+      <div className={styles["recursive-page"]}>
+        <div className={styles["input-container"]}>
+          <input
+            type="number"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.valueAsNumber)}
+            placeholder="0"
+            min="0"
+          />
+          <button onClick={handleGenerateComponents}>
+            Generate Components
+          </button>
         </div>
-      </Layout>
-    );
-  }
-  
+        <div>
+          {maxDepth > 0 && (
+            <RecursiveComponent
+              message={message}
+              depth={depth}
+              maxDepth={maxDepth}
+            />
+          )}
+        </div>
+        <div className={styles["gradient"]}></div>
+      </div>
+    </Layout>
+  );
+}
